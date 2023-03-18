@@ -111,6 +111,7 @@
 <div class="layui-fluid ew-console-wrapper">
     <div class="layui-row layui-col-space15">
 
+        <!--我的投诉-->
         <div class="layui-col-xs12 layui-col-sm3 layui-col-md3">
             <div class="layui-card">
                 <div class="layui-card-header">
@@ -125,6 +126,8 @@
                 </div>
             </div>
         </div>
+
+        <!--我的维修-->
         <div class="layui-col-xs12 layui-col-sm3 layui-col-md3">
             <div class="layui-card">
                 <div class="layui-card-header">
@@ -140,6 +143,7 @@
             </div>
         </div>
 
+        <!--我的账单-->
         <div class="layui-col-xs12 layui-col-sm3 layui-col-md3">
             <div class="layui-card">
                 <div class="layui-card-header">
@@ -154,6 +158,8 @@
                 </div>
             </div>
         </div>
+
+        <!--个人信息-->
         <div class="layui-col-xs12 layui-col-sm3 layui-col-md3">
             <div class="layui-card">
                 <div class="layui-card-header">
@@ -163,11 +169,14 @@
                     </span>
                 </div>
                 <div class="layui-card-body">
-                    <p class="lay-big-font">手机号:</p>
+                    <p class="lay-big-font"><span style="font-size: 28px;line-height: 1;">手机号</span></p>
+
                     <p>[[${session.user.phone}]]<span class="pull-right"></span></p>
                 </div>
             </div>
         </div>
+
+
     </div>
     <!-- 快捷方式 -->
     <div class="layui-row layui-col-space15">
@@ -204,9 +213,12 @@
         </div>
         <div class="layui-col-sm6" style="padding-bottom: 0;">
             <div class="layui-card">
-                <div class="layui-card-body" style="padding: 17px 15px;">
+                <div class="layui-card-body" style="padding: 7px 15px;">
                     <div class="layui-card-body">
-                        <p class="lay-big-font">[[${gonggao.title}]]</p>
+                        <!--公告传参-->
+                        <p class="lay-big-font">
+                        <span style="font-size: 24px;line-height: 1;">[[${gonggao.title}]]</span>
+                        </p>
                         <p>[[${gonggao.content}]]</p>
                     </div>
                 </div>

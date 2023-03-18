@@ -114,7 +114,7 @@
 
 <!-- 正文开始 -->
 <div class="layui-fluid">
-    <!-- 快捷方式 -->
+    <!-- 业主数量 -->
     <div id="consoleLink" class="layui-row layui-col-space15">
         <div class="layui-col-lg3 layui-col-md3 layui-col-sm3 layui-col-xs6">
             <div class="console-link-block" ew-href="/user" ew-title="业主数量">
@@ -124,6 +124,8 @@
                 <!--<div class="console-link-block-band">去查看</div>-->
             </div>
         </div>
+
+        <!--公告数量-->
         <div class="layui-col-lg3 layui-col-md3 layui-col-sm3 layui-col-xs6">
             <div class="console-link-block" ew-href="/gonggao" ew-title="公告数量">
                 <img class="console-link-block-icon" src="../../assets/images/homepic2.png">
@@ -131,6 +133,8 @@
                 <div class="console-link-block-text">公告</div>
             </div>
         </div>
+
+        <!--投诉数量-->
         <div class="layui-col-lg3 layui-col-md3 layui-col-sm3 layui-col-xs6">
             <div class="console-link-block" ew-href="/tousu" ew-title="投诉数量">
                 <img class="console-link-block-icon" src="../../assets/images/homepic5.png">
@@ -138,6 +142,8 @@
                 <div class="console-link-block-text">投诉</div>
             </div>
         </div>
+
+        <!--维修数量-->
         <div class="layui-col-lg3 layui-col-md3 layui-col-sm3 layui-col-xs6">
             <div class="console-link-block" ew-href="/repair" ew-title="维修数量">
                 <img class="console-link-block-icon" src="../../assets/images/homepic6.png">
@@ -149,12 +155,15 @@
     </div>
 
     <!-- 统计图表 -->
+
+    <!--房屋统计-->
     <div class="layui-row layui-col-space15">
         <div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
             <div class="layui-card">
                 <div class="layui-card-header">房屋统计</div>
                 <div class="layui-card-body">
-                    <div style="height: 300px;position: relative;">
+                    <!--方块大小-->
+                    <div style="height: 200px;position: relative;">
                         <div id="tjDivDay" style="height: 100%;"></div>
                     </div>
                     <div class="layui-row text-center">
@@ -170,11 +179,14 @@
                 </div>
             </div>
         </div>
+
+        <!--车位统计-->
         <div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
             <div class="layui-card">
                 <div class="layui-card-header">车位统计</div>
                 <div class="layui-card-body">
-                    <div style="height: 300px;position: relative;">
+                    <!--方块大小-->
+                    <div style="height: 200px;position: relative;">
                     <div id="tjDivWeek" style="height: 100%;"></div>
                     </div>
                 </div>
@@ -190,11 +202,14 @@
                 </div>
             </div>
         </div>
+
+        <!--缴费统计-->
         <div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
             <div class="layui-card">
                 <div class="layui-card-header">缴费统计</div>
                 <div class="layui-card-body">
-                    <div style="height: 300px;position: relative;">
+                    <!--方块大小-->
+                    <div style="height: 200px;position: relative;">
                     <div id="tjDivMonth" style="height: 100%;"></div>
                     </div>
                 </div>
@@ -210,6 +225,8 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
 
