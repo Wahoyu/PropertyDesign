@@ -74,7 +74,7 @@
                     <a><i class="layui-icon layui-icon-home"></i>&emsp;<cite>首页</cite></a>
                     <dl class="layui-nav-child">
                         <dd><a lay-href="/adminConsole">控制台</a></dd>
-                        <dd><a lay-href="/druid/">数据库</a></dd>
+                        <!--<dd><a lay-href="/druid/">数据库</a></dd>-->
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -142,11 +142,9 @@
 
         // 默认加载主页
         index.loadHome({
-            menuPath: '/console',
+            menuPath: '/adminConsole',
             menuName: '<i class="layui-icon layui-icon-home"></i>'
         });
-        
-
     });
 </script>
 </body>
