@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.bean.User_Room;
+import com.example.demo.eneity.User_Room;
 import com.example.demo.dao.User_RoomDao;
 import com.example.demo.service.User_RoomService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.bean.Gonggao;
+import com.example.demo.eneity.Gonggao;
 import com.example.demo.dao.GonggaoDao;
 import com.example.demo.service.GonggaoService;
 import org.springframework.beans.factory.annotation.Autowired;

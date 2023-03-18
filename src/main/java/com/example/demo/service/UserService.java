@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.User;
+import com.example.demo.eneity.User;
 
 import java.util.List;
 

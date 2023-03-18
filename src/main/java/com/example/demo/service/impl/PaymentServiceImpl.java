@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.bean.Payment;
+import com.example.demo.eneity.Payment;
 import com.example.demo.dao.PaymentDao;
 import com.example.demo.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;

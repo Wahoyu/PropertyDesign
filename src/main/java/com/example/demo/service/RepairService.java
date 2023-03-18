@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.Repair;
+import com.example.demo.eneity.Repair;
 
 import java.util.List;
 

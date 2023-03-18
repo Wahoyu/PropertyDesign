@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.bean.Repair;
-import com.example.demo.bean.ResBody;
-import com.example.demo.bean.User;
+import com.example.demo.eneity.Repair;
+import com.example.demo.eneity.ResBody;
+import com.example.demo.eneity.User;
 import com.example.demo.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

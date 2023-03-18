@@ -1,12 +1,11 @@
 package com.example.demo.dao;
 
-import com.example.demo.bean.*;
+import com.example.demo.eneity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 

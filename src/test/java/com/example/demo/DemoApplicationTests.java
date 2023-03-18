@@ -9,7 +9,6 @@ class DemoApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println(Similarity.getSimilarity("努力加油","持续努力发展"));
     }
 
 }

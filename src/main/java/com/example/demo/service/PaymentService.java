@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.Payment;
+import com.example.demo.eneity.Payment;
 
 import java.util.List;
 

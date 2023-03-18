@@ -1,9 +1,9 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.bean.Admin;
-import com.example.demo.bean.Gonggao;
-import com.example.demo.bean.User;
+import com.example.demo.eneity.Admin;
+import com.example.demo.eneity.Gonggao;
+import com.example.demo.eneity.User;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,22 +31,22 @@ public class IndexController {
     @Autowired
     CarService carService;
 
-    @GetMapping("/login")
+    @GetMapping("/admin/login")
     public String login() {
-        return "page/template/login";
+        return "page/admin/adminLogin";
     }
 
-    @GetMapping("/index")
+    @GetMapping("/admin/index")
     public String index(HttpSession session) {
 
         //直接进入主页需要判断身份
         Admin admin = (Admin) session.getAttribute("admin");
-        if(admin != null) return "index";
-        else return "page/template/login";
+        if(admin != null) return "page/admin/index";
+        else return "page/admin/adminLogin";
 
     }
 
-    @GetMapping("/console")
+    @GetMapping("/adminConsole")
     public String console(Model model) {
         int gonggaoCount = gonggaoService.getCount();
         int repairCount = repairService.getCount();
@@ -68,7 +68,7 @@ public class IndexController {
         model.addAttribute("carFreeCount",carFreeCount);
         model.addAttribute("paymentCount",paymentCount);
         model.addAttribute("paymentFreeCount",paymentFreeCount);
-        return "page/console/console";
+        return "page/admin/console";
     }
 
     @GetMapping("/tpl-theme")
@@ -93,62 +93,65 @@ public class IndexController {
 
     @GetMapping("/user-info")
     public String userinfo(){
-        return "page/template/user-info";
+        return "page/admin/user-info";
     }
 
     @GetMapping("/building")
     public String building(){
-        return "page/template/building";
+        return "page/admin/building";
     }
 
     @GetMapping("/danyuan")
     public String danyuan(){
-        return "page/template/danyuan";
+        return "page/admin/danyuan";
     }
 
     @GetMapping("/room")
     public String room(){
-        return "page/template/room";
+        return "page/admin/room";
     }
 
     @GetMapping("/gonggao")
     public String gonggao(){
-        return "page/template/gonggao";
+        return "page/admin/gonggao";
     }
 
     @GetMapping("/repair")
     public String repair(){
-        return "page/template/repair";
+        return "page/admin/repair";
     }
 
     @GetMapping("/tousu")
     public String tousu(){
-        return "page/template/tousu";
+        return "page/admin/tousu";
     }
 
     @GetMapping("/payment")
     public String payment(){
-        return "page/template/payment";
+        return "page/admin/payment";
     }
 
     @GetMapping("/car")
     public String car(){
-        return "page/template/car";
+        return "page/admin/car";
     }
 
     @GetMapping("/user")
     public String user(){
-        return "page/template/user";
+        return "page/admin/user";
     }
 
     @GetMapping("/user/login")
     public String userlogin(){
-        return "page/system/login";
+        return "page/user/userLogin";
     }
 
     @GetMapping("/user/index")
-    public String userindex(){
-        return "page/system/index";
+    public String userindex(HttpSession session){
+        //直接进入主页需要判断身份
+        User user = (User) session.getAttribute("user");
+        if(user != null) return "page/user/index";
+        else return "page/user/userLogin";
     }
 
     @GetMapping("/user/console")
@@ -168,11 +171,11 @@ public class IndexController {
         model.addAttribute("repairCount",repairCount);
         model.addAttribute("tousuCount",tousuCount);
         model.addAttribute("paymentCount",paymentCount);
-        return "page/system/console";
+        return "page/user/console";
     }
 
     @GetMapping("/paymentDetail")
     public String paymentDetail(){
-        return "page/template/paymentDetail";
+        return "page/admin/paymentDetail";
     }
 }

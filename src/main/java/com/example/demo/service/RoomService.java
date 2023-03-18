@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.Room;
+import com.example.demo.eneity.Room;
 
 import java.util.List;
 

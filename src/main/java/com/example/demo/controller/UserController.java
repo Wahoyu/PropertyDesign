@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.bean.ResBody;
-import com.example.demo.bean.User;
+import com.example.demo.eneity.ResBody;
+import com.example.demo.eneity.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -85,10 +85,12 @@ public class UserController {
     @PostMapping("/api/loginByPassword")
     public ResBody loginByPassword(@RequestBody Map<String, Object> params,
                                    HttpSession session) {
+
         ResBody resBody = new ResBody();
         String phone = params.get("phone").toString();
         String password = params.get("password").toString();
         User user = service.loginByPassword(phone,password);
+
         if (user == null){
             resBody.setCode(500);
             resBody.setMsg("登录失败，请重新登录");

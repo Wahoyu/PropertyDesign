@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.Gonggao;
+import com.example.demo.eneity.Gonggao;
 
 import java.util.List;
 

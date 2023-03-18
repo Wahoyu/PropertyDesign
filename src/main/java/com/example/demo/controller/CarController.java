@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.bean.Car;
-import com.example.demo.bean.ResBody;
+import com.example.demo.eneity.Car;
+import com.example.demo.eneity.ResBody;
 import com.example.demo.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

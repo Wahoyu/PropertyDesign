@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.Danyuan;
+import com.example.demo.eneity.Danyuan;
 
 import java.util.List;
 

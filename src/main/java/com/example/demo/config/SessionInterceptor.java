@@ -21,7 +21,7 @@ public class SessionInterceptor implements HandlerInterceptor {
         Object user = arg0.getSession().getAttribute("user");
         Object admin = arg0.getSession().getAttribute("admin");
         if (null == user || null == admin) {
-            arg1.sendRedirect("/login");
+            arg1.sendRedirect("/user/login");
             return false;}
         return true;
     }

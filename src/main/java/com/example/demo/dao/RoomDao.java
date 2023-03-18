@@ -1,7 +1,7 @@
 package com.example.demo.dao;
 
-import com.example.demo.bean.Danyuan;
-import com.example.demo.bean.Room;
+import com.example.demo.eneity.Danyuan;
+import com.example.demo.eneity.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

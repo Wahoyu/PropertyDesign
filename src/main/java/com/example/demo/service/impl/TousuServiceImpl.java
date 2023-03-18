@@ -1,8 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.bean.Repair;
-import com.example.demo.bean.Tousu;
-import com.example.demo.dao.RepairDao;
+import com.example.demo.eneity.Tousu;
 import com.example.demo.dao.TousuDao;
 import com.example.demo.service.TousuService;
 import org.springframework.beans.factory.annotation.Autowired;

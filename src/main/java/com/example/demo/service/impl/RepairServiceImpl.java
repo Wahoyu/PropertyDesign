@@ -1,7 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.bean.Gonggao;
-import com.example.demo.bean.Repair;
+import com.example.demo.eneity.Repair;
 import com.example.demo.dao.RepairDao;
 import com.example.demo.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;

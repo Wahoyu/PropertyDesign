@@ -1,7 +1,7 @@
 package com.example.demo.dao;
 
-import com.example.demo.bean.Admin;
-import com.example.demo.bean.Gonggao;
+import com.example.demo.eneity.Admin;
+import com.example.demo.eneity.Gonggao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

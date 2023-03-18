@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.bean.Admin;
-import com.example.demo.bean.ResBody;
+import com.example.demo.eneity.Admin;
+import com.example.demo.eneity.ResBody;
 import com.example.demo.service.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

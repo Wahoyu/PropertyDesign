@@ -1,8 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.bean.Danyuan;
-import com.example.demo.bean.Room;
-import com.example.demo.dao.DanyuanDao;
+import com.example.demo.eneity.Room;
 import com.example.demo.dao.RoomDao;
 import com.example.demo.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;

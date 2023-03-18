@@ -1,9 +1,8 @@
 package com.example.demo.dao;
 
-import com.example.demo.bean.Car;
-import com.example.demo.bean.User;
-import com.example.demo.bean.User_Car;
-import com.example.demo.bean.User_Room;
+import com.example.demo.eneity.Car;
+import com.example.demo.eneity.User;
+import com.example.demo.eneity.User_Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.bean.Payment;
-import com.example.demo.bean.ResBody;
+import com.example.demo.eneity.Payment;
+import com.example.demo.eneity.ResBody;
 import com.example.demo.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

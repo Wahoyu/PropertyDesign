@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.bean.Danyuan;
+import com.example.demo.eneity.Danyuan;
 import com.example.demo.dao.DanyuanDao;
 import com.example.demo.service.DanyuanService;
 import org.springframework.beans.factory.annotation.Autowired;
