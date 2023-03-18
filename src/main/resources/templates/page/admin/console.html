@@ -114,50 +114,80 @@
 
 <!-- 正文开始 -->
 <div class="layui-fluid">
-    <!-- 业主数量 -->
-    <div id="consoleLink" class="layui-row layui-col-space15">
-        <div class="layui-col-lg3 layui-col-md3 layui-col-sm3 layui-col-xs6">
-            <div class="console-link-block" ew-href="/user" ew-title="业主数量">
-                <img class="console-link-block-icon" src="../../assets/images/homepic1.png">
-                <div class="console-link-block-num">[[${userCount}]]</div>
-                <div class="console-link-block-text">业主</div>
-                <!--<div class="console-link-block-band">去查看</div>-->
+    <div class="layui-row layui-col-space15">
+        <!--业主数量-->
+        <div class="layui-col-xs12 layui-col-sm3 layui-col-md3">
+            <div class="layui-card">
+                <!--面板头部-->
+                <div class="layui-card-header">
+                    业主数量
+                    <span class="icon-text pull-right" lay-tips="业主数量" lay-direction="4" lay-offset="5px,5px">
+                        <i class="layui-icon layui-icon-tips"></i>
+                    </span>
+                </div>
+                <!--面板主体-->
+                <div class="layui-card-body">
+                    <p class="lay-big-font">[[${userCount}]] <span style="font-size: 24px;line-height: 1;">位</span></p>
+                </div>
             </div>
         </div>
 
         <!--公告数量-->
-        <div class="layui-col-lg3 layui-col-md3 layui-col-sm3 layui-col-xs6">
-            <div class="console-link-block" ew-href="/gonggao" ew-title="公告数量">
-                <img class="console-link-block-icon" src="../../assets/images/homepic2.png">
-                <div class="console-link-block-num">[[${gonggaoCount}]]</div>
-                <div class="console-link-block-text">公告</div>
+        <div class="layui-col-xs12 layui-col-sm3 layui-col-md3">
+            <div class="layui-card">
+                <!--面板头部-->
+                <div class="layui-card-header">
+                    公告数量
+                    <span class="icon-text pull-right" lay-tips="公告数量" lay-direction="4" lay-offset="5px,5px">
+                            <i class="layui-icon layui-icon-tips"></i>
+                        </span>
+                </div>
+                <!--面板主体-->
+                <div class="layui-card-body">
+                    <p class="lay-big-font">[[${gonggaoCount}]] <span style="font-size: 24px;line-height: 1;">条</span></p>
+                </div>
             </div>
         </div>
 
         <!--投诉数量-->
-        <div class="layui-col-lg3 layui-col-md3 layui-col-sm3 layui-col-xs6">
-            <div class="console-link-block" ew-href="/tousu" ew-title="投诉数量">
-                <img class="console-link-block-icon" src="../../assets/images/homepic5.png">
-                <div class="console-link-block-num">[[${tousuCount}]]</div>
-                <div class="console-link-block-text">投诉</div>
+        <div class="layui-col-xs12 layui-col-sm3 layui-col-md3">
+            <div class="layui-card">
+                <!--面板头部-->
+                <div class="layui-card-header">
+                    申请投诉数量
+                    <span class="icon-text pull-right" lay-tips="投诉数量" lay-direction="4" lay-offset="5px,5px">
+                        <i class="layui-icon layui-icon-tips"></i>
+                    </span>
+                </div>
+                <!--面板主体-->
+                <div class="layui-card-body">
+                    <p class="lay-big-font">[[${tousuCount}]] <span style="font-size: 24px;line-height: 1;">条</span></p>
+                </div>
             </div>
         </div>
 
         <!--维修数量-->
-        <div class="layui-col-lg3 layui-col-md3 layui-col-sm3 layui-col-xs6">
-            <div class="console-link-block" ew-href="/repair" ew-title="维修数量">
-                <img class="console-link-block-icon" src="../../assets/images/homepic6.png">
-                <div class="console-link-block-num">[[${repairCount}]]</div>
-                <div class="console-link-block-text">维修</div>
-                <!--<div class="console-link-block-band">去查看</div>-->
+        <div class="layui-col-xs12 layui-col-sm3 layui-col-md3">
+            <div class="layui-card">
+                <!--面板头部-->
+                <div class="layui-card-header">
+                    申请维修数量
+                    <span class="icon-text pull-right" lay-tips="维修申请数量" lay-direction="4" lay-offset="5px,5px">
+                            <i class="layui-icon layui-icon-tips"></i>
+                        </span>
+                </div>
+                <!--面板主体-->
+                <div class="layui-card-body">
+                    <p class="lay-big-font">[[${repairCount}]] <span style="font-size: 24px;line-height: 1;">条</span></p>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- 统计图表 -->
-
-    <!--房屋统计-->
     <div class="layui-row layui-col-space15">
+
+        <!--房屋统计-->
         <div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
             <div class="layui-card">
                 <div class="layui-card-header">房屋统计</div>
@@ -225,7 +255,6 @@
                 </div>
             </div>
         </div>
-
 
     </div>
 </div>
