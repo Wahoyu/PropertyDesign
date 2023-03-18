@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.bean.Building;
 import com.example.demo.bean.Car;
-import com.example.demo.bean.Danyuan;
 import com.example.demo.bean.ResBody;
 import com.example.demo.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;

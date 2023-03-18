@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.bean.Building;
 import com.example.demo.bean.Danyuan;
 import com.example.demo.bean.ResBody;
-import com.example.demo.service.BuildingService;
 import com.example.demo.service.DanyuanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

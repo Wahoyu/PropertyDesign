@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.bean.Repair;
 import com.example.demo.bean.ResBody;
-import com.example.demo.bean.Tousu;
 import com.example.demo.bean.User;
 import com.example.demo.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;

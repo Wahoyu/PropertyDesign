@@ -1,55 +1,27 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.Repair;
 import com.example.demo.bean.Tousu;
-import com.example.demo.dao.RepairDao;
-import com.example.demo.dao.TousuDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class TousuService {
-    @Autowired
-    TousuDao dao;
-    public int getCount() {
-        return dao.getCount();
-    }
+public interface TousuService {
+    public int getCount();
 
-    public List<Tousu> getAllTousus(int page, int limit) {
-        return dao.getAllTousus(page,limit);
-    }
+    public List<Tousu> getAllTousus(int page, int limit);
 
-    public int addTousu(Tousu tousu) {
-        return dao.addTousu(tousu);
-    }
+    public int addTousu(Tousu tousu);
 
-    public int updateTousu(Tousu tousu) {
-        return dao.updateTousu(tousu);
-    }
+    public int updateTousu(Tousu tousu);
 
-    public int delTousu(int id) {
-        return dao.delTousu(id);
-    }
+    public int delTousu(int id);
 
-    public int getCount(String name) {
-        return dao.getCount(name);
-    }
+    public int getCount(String name);
 
-    public List<Tousu> findTousu(int page, int limit, String name) {
-        return dao.findTousu(page,limit,name);
-    }
+    public List<Tousu> findTousu(int page, int limit, String name);
 
-    public int getCountByUserId(Integer id) {
-        return dao.getCountByUserId(id);
-    }
+    public int getCountByUserId(Integer id);
 
-    public int getCount(Integer id) {
-        return dao.getCount(id);
-    }
+    public int getCount(Integer id);
 
-    public List<Tousu> getAllToususByUser(int page, int limit, Integer id) {
-        return dao.getAllToususByUser(page,limit,id);
-    }
+    public List<Tousu> getAllToususByUser(int page, int limit, Integer id);
 }

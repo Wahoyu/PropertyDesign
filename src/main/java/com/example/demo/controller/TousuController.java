@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.bean.ResBody;
-import com.example.demo.bean.Room;
 import com.example.demo.bean.Tousu;
 import com.example.demo.bean.User;
 import com.example.demo.service.TousuService;

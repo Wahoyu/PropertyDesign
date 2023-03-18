@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.bean.Danyuan;
 import com.example.demo.bean.ResBody;
 import com.example.demo.bean.Room;
 import com.example.demo.service.RoomService;

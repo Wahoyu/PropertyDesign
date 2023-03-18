@@ -1,45 +1,24 @@
 package com.example.demo.service;
 
 import com.example.demo.bean.Gonggao;
-import com.example.demo.dao.GonggaoDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class GonggaoService {
-    @Autowired
-    GonggaoDao dao;
-    public int getCount() {
-        return dao.getCount();
-    }
+public interface GonggaoService {
 
-    public List<Gonggao> getAllGonggaos(int page, int limit) {
-        return dao.getAllGonggaos(page,limit);
-    }
+    public int getCount();
 
-    public int addGonggao(Gonggao gonggao) {
-        return dao.addGonggao(gonggao);
-    }
+    public List<Gonggao> getAllGonggaos(int page, int limit);
 
-    public int updateGonggao(Gonggao gonggao) {
-        return dao.updateGonggao(gonggao);
-    }
+    public int addGonggao(Gonggao gonggao);
 
-    public int delGonggao(int id) {
-        return dao.delGonggao(id);
-    }
+    public int updateGonggao(Gonggao gonggao);
 
-    public int getCount(String name) {
-        return dao.getCount(name);
-    }
+    public int delGonggao(int id);
 
-    public List<Gonggao> findGonggao(int page, int limit, String name) {
-        return dao.findGonggao(page,limit,name);
-    }
+    public int getCount(String name);
 
-    public Gonggao getGonggao() {
-        return dao.getGonggao();
-    }
+    public List<Gonggao> findGonggao(int page, int limit, String name);
+
+    public Gonggao getGonggao();
 }

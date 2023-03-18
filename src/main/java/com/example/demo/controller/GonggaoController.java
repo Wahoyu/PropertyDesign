@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.bean.Admin;
-import com.example.demo.bean.Building;
 import com.example.demo.bean.Gonggao;
 import com.example.demo.bean.ResBody;
 import com.example.demo.service.GonggaoService;
