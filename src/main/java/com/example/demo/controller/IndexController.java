@@ -154,7 +154,7 @@ public class IndexController {
         else return "page/user/userLogin";
     }
 
-    @GetMapping("/user/console")
+    @GetMapping("/userConsole")
     public String userconsole(Model model,HttpSession session){
         User user = (User) session.getAttribute("user");
         Gonggao gonggao = gonggaoService.getGonggao();
