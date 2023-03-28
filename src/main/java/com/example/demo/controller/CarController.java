@@ -81,7 +81,7 @@ public class CarController {
     }
 
     @GetMapping("/ajax/getAllFreeCars")
-    public ResBody getAllDanyuans(@RequestParam int type) {
+    public ResBody getAllUnits(@RequestParam int type) {
         ResBody resBody = new ResBody();
         List<Car> list= service.getAllFreeCars(type);
         resBody.setData(list);

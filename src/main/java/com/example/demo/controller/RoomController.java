@@ -41,7 +41,7 @@ public class RoomController {
     }
 
     @PostMapping("/api/updateRoom")
-    public ResBody updateDanyuan(@RequestBody Room room) {
+    public ResBody updateUnit(@RequestBody Room room) {
         ResBody resBody = new ResBody();
         int i = service.updateRoom(room);
         if (i == 1){
@@ -89,9 +89,9 @@ public class RoomController {
     }
 
     @GetMapping("/ajax/getAllFreeRooms")
-    public ResBody getAllFreeRooms(@RequestParam int danyuan_id) {
+    public ResBody getAllFreeRooms(@RequestParam int unit_id) {
         ResBody resBody = new ResBody();
-        List<Room> list = service.getAllFreeRooms(danyuan_id);
+        List<Room> list = service.getAllFreeRooms(unit_id);
         resBody.setData(list);
         resBody.setCode(0);
         return resBody;

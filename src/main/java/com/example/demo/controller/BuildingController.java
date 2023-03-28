@@ -81,7 +81,7 @@ public class BuildingController {
     }
 
     @GetMapping("/ajax/getAllBuildings")
-    public ResBody getAllDanyuans() {
+    public ResBody getAllUnits() {
         ResBody resBody = new ResBody();
         List<Building> list= service.getAllBuildings();
         resBody.setData(list);

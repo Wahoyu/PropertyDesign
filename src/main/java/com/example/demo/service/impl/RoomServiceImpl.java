@@ -40,8 +40,8 @@ public class RoomServiceImpl implements RoomService {
         return dao.getCount(name);
     }
 
-    public List<Room> getAllFreeRooms(int danyuan_id) {
-        return dao.getAllFreeRooms(danyuan_id);
+    public List<Room> getAllFreeRooms(int unit_id) {
+        return dao.getAllFreeRooms(unit_id);
     }
 
     public int getFreeCount() {

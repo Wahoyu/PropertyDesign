@@ -98,7 +98,7 @@
         // 渲染表格
         var insTb = table.render({
             elem: '#tableBook',
-            url: '/api/getAllDanyuans',
+            url: '/api/getAllUnits',
             page: true,
             height: "full-100",
             toolbar: true,
@@ -120,7 +120,7 @@
 
         // 搜索
         form.on('submit(formSubSearchBook)', function (data) {
-            insTb.reload({where: data.field,url:'/api/findDanyuan',page : {curr : 1}}, 'data');
+            insTb.reload({where: data.field,url:'/api/findUnit',page : {curr : 1}}, 'data');
         });
 
         // 工具条点击事件
@@ -159,7 +159,7 @@
                             }
                         })
                         $(layero).children('.layui-layer-content').css('overflow', 'visible');
-                        var url = '/api/addDanyuan';
+                        var url = '/api/addUnit';
                         // 回显数据
                         form.val('modelBookForm', mBook);
                         // 表单提交事件
@@ -208,7 +208,7 @@
                             }
                         })
                         $(layero).children('.layui-layer-content').css('overflow', 'visible');
-                        var url = '/api/updateDanyuan';
+                        var url = '/api/updateUnit';
                         //mBook && (mBook.roleId = mUser.roles[0].roleId);
                         // 回显数据
                         form.val('modelBookForm', mBook);
@@ -248,7 +248,7 @@
             }, function (i) {
                 layer.close(i);
                 layer.load(2);
-                $.get('/api/delDanyuan', {
+                $.get('/api/delUnit', {
                     id: id
                 }, function (res) {
                     layer.closeAll('loading');

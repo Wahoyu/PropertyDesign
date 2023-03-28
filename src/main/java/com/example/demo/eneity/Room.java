@@ -12,6 +12,6 @@ public class Room {
     String name;
     String area;
     Integer status;
-    Integer danyuan_id;
-    Danyuan danyuan;
+    Integer unit_id;
+    Unit unit;
 }

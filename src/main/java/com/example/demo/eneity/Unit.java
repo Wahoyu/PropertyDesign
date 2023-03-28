@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Danyuan {
+public class Unit {
     Integer id;
     String name;
     Integer building_id;

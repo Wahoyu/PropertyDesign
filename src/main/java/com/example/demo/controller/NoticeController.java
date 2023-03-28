@@ -1,34 +1,40 @@
 package com.example.demo.controller;
 
-import com.example.demo.eneity.Danyuan;
+import com.example.demo.eneity.Admin;
+import com.example.demo.eneity.Notice;
 import com.example.demo.eneity.ResBody;
-import com.example.demo.service.DanyuanService;
+import com.example.demo.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 @RestController
-public class DanyuanController {
+public class NoticeController {
     @Autowired
-    DanyuanService service;
+    NoticeService service;
 
-    @GetMapping("/api/getAllDanyuans")
-    public ResBody getAllDanyuans(@RequestParam int page,
+    @GetMapping("/api/getAllNotices")
+    public ResBody getAllNotices(@RequestParam int page,
                                    @RequestParam int limit) {
         ResBody resBody = new ResBody();
         int count = service.getCount();
-        List<Danyuan> list= service.getAllDanyuans(page, limit);
+        List<Notice> list= service.getAllNotices(page, limit);
         resBody.setCount(count);
         resBody.setData(list);
         resBody.setCode(0);
         return resBody;
     }
 
-    @PostMapping("/api/addDanyuan")
-    public ResBody addDanyuan(@RequestBody Danyuan danyuan) {
+    @PostMapping("/api/addNotice")
+    public ResBody addNotice(@RequestBody Notice notice, HttpSession session) {
         ResBody resBody = new ResBody();
-        int i = service.addDanyuan(danyuan);
+        Admin admin = (Admin) session.getAttribute("admin");
+        notice.setCreateTime(new Date());
+        notice.setCreateBy(admin.getId());
+        int i = service.addNotice(notice);
         if (i == 1){
             resBody.setCode(200);
             resBody.setMsg("添加成功");
@@ -39,10 +45,13 @@ public class DanyuanController {
         return resBody;
     }
 
-    @PostMapping("/api/updateDanyuan")
-    public ResBody updateDanyuan(@RequestBody Danyuan danyuan) {
+    @PostMapping("/api/updateNotice")
+    public ResBody updateNotice(@RequestBody Notice notice, HttpSession session) {
         ResBody resBody = new ResBody();
-        int i = service.updateDanyuan(danyuan);
+        Admin admin = (Admin) session.getAttribute("admin");
+        notice.setUpdateTime(new Date());
+        notice.setUpdateBy(admin.getId());
+        int i = service.updateNotice(notice);
         if (i == 1){
             resBody.setCode(200);
             resBody.setMsg("修改成功");
@@ -53,10 +62,10 @@ public class DanyuanController {
         return resBody;
     }
 
-    @GetMapping("/api/delDanyuan")
-    public ResBody delDanyuan(@RequestParam int id) {
+    @GetMapping("/api/delNotice")
+    public ResBody delBuilding(@RequestParam int id) {
         ResBody resBody = new ResBody();
-        int i = service.delDanyuan(id);
+        int i = service.delNotice(id);
         if (i == 1){
             resBody.setCode(200);
             resBody.setMsg("删除成功");
@@ -67,23 +76,14 @@ public class DanyuanController {
         return resBody;
     }
 
-    @GetMapping("/api/findDanyuan")
+    @GetMapping("/api/findNotice")
     public ResBody findBuilding(@RequestParam int page,
                                 @RequestParam int limit,
                                 @RequestParam String name) {
         ResBody resBody = new ResBody();
         int count = service.getCount(name);
-        List<Danyuan> list= service.findDanyuan(page, limit,name);
+        List<Notice> list= service.findNotice(page, limit,name);
         resBody.setCount(count);
-        resBody.setData(list);
-        resBody.setCode(0);
-        return resBody;
-    }
-
-    @GetMapping("/ajax/getAllDanyuans")
-    public ResBody getAllDanyuans() {
-        ResBody resBody = new ResBody();
-        List<Danyuan> list= service.getAllDanyuans();
         resBody.setData(list);
         resBody.setCode(0);
         return resBody;

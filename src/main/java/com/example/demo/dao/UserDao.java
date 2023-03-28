@@ -31,16 +31,16 @@ public class UserDao {
                 List<Car> car = template.query("SELECT car.id,car.name,car.type,car.`status` FROM car,user,user_car " +
                                 "WHERE car.id = car_id and user_id = user.id and user_car.outTime is NULL and user_id = ?" ,
                         new Object[]{user.getId()},new BeanPropertyRowMapper(Car.class));
-                List<Room> room = template.query("SELECT room.id,room.name,room.danyuan_id,room.`status` FROM room,user," +
+                List<Room> room = template.query("SELECT room.id,room.name,room.unit_id,room.`status` FROM room,user," +
                                 "user_room WHERE room.id = room_id and user_id = user.id and user_room.outTime is NULL and user_id = ?" ,
                         new Object[]{(user.getId())},new BeanPropertyRowMapper(Room.class));
                 if (!car.isEmpty()){
                     user.setCar(car.get(0));
                 }
                 if (!room.isEmpty()) {
-                    List<Danyuan> danyuan = template.query("select * from danyuan where id = ?" ,new Object[]{room.get(0).getDanyuan_id()},
-                            new BeanPropertyRowMapper(Danyuan.class));
-                    room.get(0).setDanyuan(danyuan.get(0));
+                    List<Unit> unit = template.query("select * from unit where id = ?" ,new Object[]{room.get(0).getUnit_id()},
+                            new BeanPropertyRowMapper(Unit.class));
+                    room.get(0).setUnit(unit.get(0));
                     user.setRoom(room.get(0));
                 }
             }

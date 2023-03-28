@@ -1,9 +1,9 @@
 package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.demo.eneity.Gonggao;
+import com.example.demo.eneity.Notice;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface GonggaoMapper extends BaseMapper<Gonggao> {
+public interface NoticeMapper extends BaseMapper<Notice> {
 }

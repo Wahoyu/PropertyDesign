@@ -79,7 +79,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">属于单元</label>
             <div class="layui-input-block">
-                <select name="danyuan_id" lay-verify="required">
+                <select name="unit_id" lay-verify="required">
                     <option value="">请选择属于单元</option>
                 </select>
             </div>
@@ -90,14 +90,14 @@
         </div>
     </form>
 </script>
-<script type="text/html" id="danyuan_1">
-    {{d.danyuan.name}}
+<script type="text/html" id="unit_1">
+    {{d.unit.name}}
 </script>
-<script type="text/html" id="danyuan_2">
+<script type="text/html" id="unit_2">
     <input type="checkbox" lay-filter="ckStateUser" value="{{d.status}}" lay-skin="switch" disabled
            lay-text="已入住|未入住" {{d.status==1?'checked':''}}/>
 </script>
-<script type="text/html" id="danyuan_3">
+<script type="text/html" id="unit_3">
     {{d.area}}m²
 </script>
 <!-- js部分 -->
@@ -125,9 +125,9 @@
                 [
                     {type: 'numbers', title: '#'}
                     ,{field: 'name', sort: true,title: '房间名'}
-                    ,{field: 'area', sort: true, templet: '#danyuan_3', title: '房间面积'}
-                    ,{field: 'status', sort: true, templet: '#danyuan_2', title: '房间状态'}
-                    ,{field: 'danyuan', sort: true, templet: '#danyuan_1', title: '隶属楼栋'}
+                    ,{field: 'area', sort: true, templet: '#unit_3', title: '房间面积'}
+                    ,{field: 'status', sort: true, templet: '#unit_2', title: '房间状态'}
+                    ,{field: 'unit', sort: true, templet: '#unit_1', title: '隶属楼栋'}
                     ,{align: 'center', toolbar: '#tableBarBook', title: '操作', minWidth: 200}
                 ]
             ]
@@ -215,7 +215,7 @@
                     content: $('#modelBook').html(),
                     success: function (layero, dIndex) {
                         $.ajax({
-                            url: '/ajax/getAllDanyuans',
+                            url: '/ajax/getAllUnits',
                             dataType: 'json',
                             type: 'get',
                             async:false,
@@ -225,7 +225,7 @@
                                         option += "<option value='"+res.data[i]['id']+"'>"+res.data[i]['name']+"</option>";
                                     }
                                 }
-                                $("[name='danyuan_id']").append(option);
+                                $("[name='unit_id']").append(option);
                                 form.render()
                             }
                         })
@@ -264,7 +264,7 @@
                     content: $('#modelBook').html(),
                     success: function (layero, dIndex) {
                         $.ajax({
-                            url: '/ajax/getAllDanyuans',
+                            url: '/ajax/getAllUnits',
                             dataType: 'json',
                             type: 'get',
                             async:false,
@@ -274,7 +274,7 @@
                                         option += "<option value='"+res.data[i]['id']+"'>"+res.data[i]['name']+"</option>";
                                     }
                                 }
-                                $("[name='danyuan_id']").append(option);
+                                $("[name='unit_id']").append(option);
                                 form.render()
                             }
                         })

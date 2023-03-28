@@ -20,7 +20,7 @@ public interface RoomService {
 
     public int getCount(String name);
 
-    public List<Room> getAllFreeRooms(int danyuan_id);
+    public List<Room> getAllFreeRooms(int unit_id);
 
     public int getFreeCount();
 }

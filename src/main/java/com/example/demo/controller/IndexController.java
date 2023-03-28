@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.eneity.Admin;
-import com.example.demo.eneity.Gonggao;
+import com.example.demo.eneity.Notice;
 import com.example.demo.eneity.User;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class IndexController {
     @Autowired
     IndexService service;
     @Autowired
-    GonggaoService gonggaoService;
+    NoticeService noticeService;
     @Autowired
     RepairService repairService;
     @Autowired
@@ -48,7 +48,7 @@ public class IndexController {
 
     @GetMapping("/adminConsole")
     public String console(Model model) {
-        int gonggaoCount = gonggaoService.getCount();
+        int noticeCount = noticeService.getCount();
         int repairCount = repairService.getCount();
         int tousuCount = tousuService.getCount();
         int userCount = userService.getCount();
@@ -58,7 +58,7 @@ public class IndexController {
         int carFreeCount = carService.getFreeCount();
         int paymentCount = user_paymentService.getCount();
         int paymentFreeCount = user_paymentService.getFreeCount();
-        model.addAttribute("gonggaoCount",gonggaoCount);
+        model.addAttribute("noticeCount",noticeCount);
         model.addAttribute("repairCount",repairCount);
         model.addAttribute("tousuCount",tousuCount);
         model.addAttribute("userCount",userCount);
@@ -101,9 +101,9 @@ public class IndexController {
         return "page/admin/building";
     }
 
-    @GetMapping("/danyuan")
-    public String danyuan(){
-        return "page/admin/danyuan";
+    @GetMapping("/unit")
+    public String unit(){
+        return "page/admin/unit";
     }
 
     @GetMapping("/room")
@@ -111,9 +111,9 @@ public class IndexController {
         return "page/admin/room";
     }
 
-    @GetMapping("/gonggao")
-    public String gonggao(){
-        return "page/admin/gonggao";
+    @GetMapping("/notice")
+    public String notice(){
+        return "page/admin/notice";
     }
 
     @GetMapping("/repair")
@@ -157,14 +157,14 @@ public class IndexController {
     @GetMapping("/userConsole")
     public String userconsole(Model model,HttpSession session){
         User user = (User) session.getAttribute("user");
-        Gonggao gonggao = gonggaoService.getGonggao();
+        Notice notice = noticeService.getNotice();
         int repairCount = repairService.getCount();
         int tousuCount = tousuService.getCount();
         int paymentCount = user_paymentService.getCount();
         int userRepair = repairService.getCountByUserId(user.getId());
         int userTousu = tousuService.getCountByUserId(user.getId());
         int userPayment = user_paymentService.getCountByUserId(user.getId());
-        model.addAttribute("gonggao",gonggao);
+        model.addAttribute("notice",notice);
         model.addAttribute("userTousu",userTousu);
         model.addAttribute("userRepair",userRepair);
         model.addAttribute("userPayment",userPayment);

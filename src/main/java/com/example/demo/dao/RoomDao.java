@@ -1,7 +1,7 @@
 package com.example.demo.dao;
 
-import com.example.demo.eneity.Danyuan;
 import com.example.demo.eneity.Room;
+import com.example.demo.eneity.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,9 +23,9 @@ public class RoomDao {
                 new BeanPropertyRowMapper(Room.class));
         if (list!=null){
             for (Room room:list){
-                List<Danyuan> danyuan = template.query("select * from danyuan where id = ?" ,new Object[]{room.getDanyuan_id()},
-                        new BeanPropertyRowMapper(Danyuan.class));
-                room.setDanyuan(danyuan.get(0));
+                List<Unit> unit = template.query("select * from unit where id = ?" ,new Object[]{room.getUnit_id()},
+                        new BeanPropertyRowMapper(Unit.class));
+                room.setUnit(unit.get(0));
             }
             return list;
         }else{
@@ -35,12 +35,12 @@ public class RoomDao {
 
     public int addRoom(Room room) {
         return template.update("insert into room values(null,?,?,0,?)",
-                room.getName(),room.getArea(),room.getDanyuan_id());
+                room.getName(),room.getArea(),room.getUnit_id());
     }
 
     public int updateRoom(Room room) {
-        return template.update("update room set `name` = ? ,`area` = ? ,`danyuan_id` = ? where id = ?",
-                room.getName(),room.getArea(),room.getDanyuan_id(),room.getId());
+        return template.update("update room set `name` = ? ,`area` = ? ,`unit_id` = ? where id = ?",
+                room.getName(),room.getArea(),room.getUnit_id(),room.getId());
     }
 
     public int delRoom(int id) {
@@ -52,9 +52,9 @@ public class RoomDao {
                 new BeanPropertyRowMapper(Room.class));
         if (list!=null){
             for (Room room:list){
-                List<Danyuan> danyuan = template.query("select * from danyuan where id = ?" ,new Object[]{room.getDanyuan_id()},
-                        new BeanPropertyRowMapper(Danyuan.class));
-                room.setDanyuan(danyuan.get(0));
+                List<Unit> unit = template.query("select * from unit where id = ?" ,new Object[]{room.getUnit_id()},
+                        new BeanPropertyRowMapper(Unit.class));
+                room.setUnit(unit.get(0));
             }
             return list;
         }else{
@@ -67,8 +67,8 @@ public class RoomDao {
         return count;
     }
 
-    public List<Room> getAllFreeRooms(int danyuan_id) {
-        List<Room> list = template.query("select * from room where status = 0 and danyuan_id = " +danyuan_id,
+    public List<Room> getAllFreeRooms(int unit_id) {
+        List<Room> list = template.query("select * from room where status = 0 and unit_id = " +unit_id,
                 new BeanPropertyRowMapper(Room.class));
         if (list!=null){
             return list;
