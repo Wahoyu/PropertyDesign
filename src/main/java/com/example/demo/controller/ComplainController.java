@@ -1,9 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.eneity.ResBody;
-import com.example.demo.eneity.Tousu;
+import com.example.demo.eneity.Complain;
 import com.example.demo.eneity.User;
-import com.example.demo.service.TousuService;
+import com.example.demo.service.ComplainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,43 +12,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class TousuController {
+public class ComplainController {
     @Autowired
-    TousuService service;
+    ComplainService service;
 
-    @GetMapping("/api/getAllTousus")
-    public ResBody getAllTousus(@RequestParam int page,
+    @GetMapping("/api/getAllComplains")
+    public ResBody getAllComplains(@RequestParam int page,
                                    @RequestParam int limit) {
         ResBody resBody = new ResBody();
         int count = service.getCount();
-        List<Tousu> list= service.getAllTousus(page, limit);
+        List<Complain> list= service.getAllComplains(page, limit);
         resBody.setCount(count);
         resBody.setData(list);
         resBody.setCode(0);
         return resBody;
     }
 
-    @GetMapping("/api/getAllToususByUser")
-    public ResBody getAllToususByUser(@RequestParam int page,
+    @GetMapping("/api/getAllComplainsByUser")
+    public ResBody getAllComplainsByUser(@RequestParam int page,
                                       @RequestParam int limit, HttpSession session){
         ResBody resBody = new ResBody();
         User user = (User) session.getAttribute("user");
         int count = service.getCount(user.getId());
-        List<Tousu> list= service.getAllToususByUser(page, limit,user.getId());
+        List<Complain> list= service.getAllComplainsByUser(page, limit,user.getId());
         resBody.setCount(count);
         resBody.setData(list);
         resBody.setCode(0);
         return resBody;
     }
 
-    @PostMapping("/api/addTousu")
-    public ResBody addTousu(@RequestBody Tousu tousu,HttpSession session) {
+    @PostMapping("/api/addComplain")
+    public ResBody addComplain(@RequestBody Complain complain,HttpSession session) {
         ResBody resBody = new ResBody();
         User user = (User) session.getAttribute("user");
         if (user!=null){
-            tousu.setUser_id(user.getId());
+            complain.setUser_id(user.getId());
         }
-        int i = service.addTousu(tousu);
+        int i = service.addComplain(complain);
         if (i == 1){
             resBody.setCode(200);
             resBody.setMsg("添加成功");
@@ -59,10 +59,10 @@ public class TousuController {
         return resBody;
     }
 
-    @PostMapping("/api/updateTousu")
-    public ResBody updateTousu(@RequestBody Tousu tousu) {
+    @PostMapping("/api/updateComplain")
+    public ResBody updateComplain(@RequestBody Complain complain) {
         ResBody resBody = new ResBody();
-        int i = service.updateTousu(tousu);
+        int i = service.updateComplain(complain);
         if (i == 1){
             resBody.setCode(200);
             resBody.setMsg("修改成功");
@@ -73,10 +73,10 @@ public class TousuController {
         return resBody;
     }
 
-    @GetMapping("/api/delTousu")
-    public ResBody delTousu(@RequestParam int id) {
+    @GetMapping("/api/delComplain")
+    public ResBody delComplain(@RequestParam int id) {
         ResBody resBody = new ResBody();
-        int i = service.delTousu(id);
+        int i = service.delComplain(id);
         if (i == 1){
             resBody.setCode(200);
             resBody.setMsg("删除成功");
@@ -87,19 +87,19 @@ public class TousuController {
         return resBody;
     }
 
-    @GetMapping("/api/findTousu")
-    public ResBody findTousu(@RequestParam int page,
+    @GetMapping("/api/findComplain")
+    public ResBody findComplain(@RequestParam int page,
                                 @RequestParam int limit,
                                 @RequestParam String name) {
         ResBody resBody = new ResBody();
         int count = 0;
-        List<Tousu> list= new ArrayList<>();
+        List<Complain> list= new ArrayList<>();
         if (name.isEmpty()){
             count = service.getCount();
-            list= service.getAllTousus(page, limit);
+            list= service.getAllComplains(page, limit);
         }else {
             count = service.getCount(name);
-            list= service.findTousu(page, limit,name);
+            list= service.findComplain(page, limit,name);
         }
         resBody.setCount(count);
         resBody.setData(list);

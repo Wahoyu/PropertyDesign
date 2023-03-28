@@ -21,7 +21,7 @@ public class IndexController {
     @Autowired
     RepairService repairService;
     @Autowired
-    TousuService tousuService;
+    ComplainService complainService;
     @Autowired
     UserService userService;
     @Autowired
@@ -50,7 +50,7 @@ public class IndexController {
     public String console(Model model) {
         int noticeCount = noticeService.getCount();
         int repairCount = repairService.getCount();
-        int tousuCount = tousuService.getCount();
+        int complainCount = complainService.getCount();
         int userCount = userService.getCount();
         int roomCount = roomService.getCount();
         int roomFreeCount = roomService.getFreeCount();
@@ -60,7 +60,7 @@ public class IndexController {
         int paymentFreeCount = user_paymentService.getFreeCount();
         model.addAttribute("noticeCount",noticeCount);
         model.addAttribute("repairCount",repairCount);
-        model.addAttribute("tousuCount",tousuCount);
+        model.addAttribute("complainCount",complainCount);
         model.addAttribute("userCount",userCount);
         model.addAttribute("roomCount",roomCount);
         model.addAttribute("roomFreeCount",roomFreeCount);
@@ -121,9 +121,9 @@ public class IndexController {
         return "page/admin/repair";
     }
 
-    @GetMapping("/tousu")
-    public String tousu(){
-        return "page/admin/tousu";
+    @GetMapping("/complain")
+    public String complain(){
+        return "page/admin/complain";
     }
 
     @GetMapping("/payment")
@@ -159,17 +159,17 @@ public class IndexController {
         User user = (User) session.getAttribute("user");
         Notice notice = noticeService.getNotice();
         int repairCount = repairService.getCount();
-        int tousuCount = tousuService.getCount();
+        int complainCount = complainService.getCount();
         int paymentCount = user_paymentService.getCount();
         int userRepair = repairService.getCountByUserId(user.getId());
-        int userTousu = tousuService.getCountByUserId(user.getId());
+        int userComplain = complainService.getCountByUserId(user.getId());
         int userPayment = user_paymentService.getCountByUserId(user.getId());
         model.addAttribute("notice",notice);
-        model.addAttribute("userTousu",userTousu);
+        model.addAttribute("userComplain",userComplain);
         model.addAttribute("userRepair",userRepair);
         model.addAttribute("userPayment",userPayment);
         model.addAttribute("repairCount",repairCount);
-        model.addAttribute("tousuCount",tousuCount);
+        model.addAttribute("complainCount",complainCount);
         model.addAttribute("paymentCount",paymentCount);
         return "page/user/console";
     }

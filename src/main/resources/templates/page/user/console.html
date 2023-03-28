@@ -121,8 +121,8 @@
                     </span>
                 </div>
                 <div class="layui-card-body">
-                    <p class="lay-big-font">[[${userTousu}]]<span style="font-size: 24px;line-height: 1;">个</span></p>
-                    <p>总投诉数量<span class="pull-right">[[${tousuCount}]] 个</span></p>
+                    <p class="lay-big-font">[[${userComplain}]]<span style="font-size: 24px;line-height: 1;">个</span></p>
+                    <p>总投诉数量<span class="pull-right">[[${complainCount}]] 个</span></p>
                 </div>
             </div>
         </div>
@@ -185,7 +185,7 @@
         <div class="layui-col-sm6" style="padding-bottom: 0;">
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-xs6 layui-col-sm3">
-                    <div class="console-app-group" id="newTousu">
+                    <div class="console-app-group" id="newComplain">
                         <i class="console-app-icon layui-icon layui-icon-group"
                            style="font-size: 26px;padding-top: 3px;margin-right: 6px;"></i>
                         <div class="console-app-name">新投诉</div>
@@ -233,7 +233,7 @@
             <div class="layui-card">
                 <div class="layui-card-header">我的投诉</div>
                 <div class="layui-card-body" style="padding: 17px 15px;">
-                    <table id="tousu1" lay-filter="tousu1"></table>
+                    <table id="complain1" lay-filter="complain1"></table>
                 </div>
             </div>
         </div>
@@ -253,8 +253,8 @@
         <span></span><span></span><span></span><span></span>
     </div>
 </div>
-<script type="text/html" id="modelTousu">
-    <form id="modelTousuForm" lay-filter="modelTousuForm" class="layui-form model-form">
+<script type="text/html" id="modelComplain">
+    <form id="modelComplainForm" lay-filter="modelComplainForm" class="layui-form model-form">
         <input name="id" type="hidden"/>
         <div class="layui-form-item">
             <label class="layui-form-label">投诉内容</label>
@@ -265,7 +265,7 @@
         </div>
         <div class="layui-form-item text-right">
             <button class="layui-btn layui-btn-primary" type="button" ew-event="closePageDialog">取消</button>
-            <button class="layui-btn" lay-filter="modelSubmitTousu" lay-submit>保存</button>
+            <button class="layui-btn" lay-filter="modelSubmitComplain" lay-submit>保存</button>
         </div>
     </form>
 </script>
@@ -316,8 +316,8 @@
         var tableX = layui.tableX;
         var table = layui.table;
         var insTb = table.render({
-            elem: '#tousu1',
-            url: '/api/getAllToususByUser',
+            elem: '#complain1',
+            url: '/api/getAllComplainsByUser',
             page: true,
             height: "250",
             cellMinWidth: 100,
@@ -387,16 +387,16 @@
             });
         });
 
-        $('#newTousu').click(function () {
+        $('#newComplain').click(function () {
             admin.open({
                 type: 1,
                 title: '添加投诉',
-                content: $('#modelTousu').html(),
+                content: $('#modelComplain').html(),
                 success: function (layero, dIndex) {
                     $(layero).children('.layui-layer-content').css('overflow', 'visible');
-                    var url = '/api/addTousu';
+                    var url = '/api/addComplain';
                     // 表单提交事件
-                    form.on('submit(modelSubmitTousu)', function (data) {
+                    form.on('submit(modelSubmitComplain)', function (data) {
                         layer.load(2);
                         $.ajax({
                             url:url,
