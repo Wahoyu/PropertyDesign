@@ -1,10 +1,19 @@
 /** 登录页面样式 */
 
 body {
-    background-image: url("../../assets/images/bg_login2.png");
-    background-position: center 110px;
+
+    /*背景图片*/
+    background-image: url("../../assets/images/background3.webp");
+
+    /*background-position: center 110px;*/
+    background-position: center;
+
     background-repeat: no-repeat;
-    background-size: 100%;
+
+    /*设置背景图片铺满整个屏幕*/
+    background-size: cover;
+    /*background-size: 100%;*/
+
     background-color: #f0f2f5;
 }
 
@@ -12,6 +21,7 @@ body {
     height: 100%
 }
 
+/*表单标签设置*/
 .login-wrapper {
     overflow: auto;
     position: absolute;
@@ -23,11 +33,21 @@ body {
 
 .login-body {
     padding: 10px 10px 40px 10px;
+
+    /*标签透明度*/
+    opacity: 95%;
+
+    /*标签位置,左边的距离,上面的距离*/
+    /*margin-left: 700px;*/
+    margin-top: 30px
 }
 
 .login-body > .layui-card {
+
+    /*width: 500px;*/
     max-width: 360px;
     margin: 0 auto;
+
 }
 
 .login-body .layui-card-header {
@@ -106,9 +126,10 @@ body {
 /** 头部样式 */
 .login-header {
     font-family: Myriad Pro, Helvetica Neue, Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.85) !important;
+    /*此设置被覆盖*/
+    color: rgba(255, 255, 255, 0.70) !important;
     padding: 10px;
 }
 
@@ -149,7 +170,7 @@ body {
 }
 
 .login-header {
-    color: rgba(0, 0, 0, .85) !important;
+    color: rgba(255, 255, 255, 0.80) !important;
 }
 
 .login-footer {
