@@ -10,6 +10,7 @@ spring:
       enabled: true # 配置热部署
       additional-paths: src/main/java
       exclude: WEB-INF/**
+
   thymeleaf:
     #模板的模式，支持 HTML, XML TEXT JAVASCRIPT
     mode: HTML5
@@ -19,6 +20,7 @@ spring:
     cache: false
     #配置模板路径，默认是templates，可以不用配置
     prefix: classpath:/templates/
+
   datasource:
     url: jdbc:mysql://localhost:3306/wuye
     username: root
