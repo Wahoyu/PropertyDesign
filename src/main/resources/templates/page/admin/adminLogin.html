@@ -77,7 +77,26 @@
         </div>
     </div>
 
+    <!--页脚-->
+    <div class="login-footer">
+        <!--一言-->
+        <p id="hitokoto" class="hitokoto">
+
+            「<a href="#" id="hitokoto_text"></a>」
+        </p>
+        <script>
+            fetch('https://v1.hitokoto.cn/?c=i')
+                .then(response => response.json())
+                .then(data => {
+                    const hitokoto = document.querySelector('#hitokoto_text')
+                    hitokoto.innerText = data.hitokoto
+                })
+                .catch(console.error)
+        </script>
+    </div>
 </div>
+
+
 
 <!-- js部分 -->
 <script src="../../assets/js/jquery-1.7.2.min.js" type="text/javascript"></script>

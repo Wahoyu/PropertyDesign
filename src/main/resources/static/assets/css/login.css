@@ -40,6 +40,7 @@ body {
     /*标签位置,左边的距离,上面的距离*/
     /*margin-left: 700px;*/
     margin-top: 30px
+
 }
 
 .login-body > .layui-card {
@@ -174,13 +175,16 @@ body {
 }
 
 .login-footer {
-    color: rgba(0, 0, 0, 0.7) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
+/*真正修改位置*/
 .login-footer a {
-    color: rgba(0, 0, 0, 0.7) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    font: 12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif
+
 }
 
 .login-footer a:hover {
-    color: rgba(0, 0, 0, 0.4) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
 }
