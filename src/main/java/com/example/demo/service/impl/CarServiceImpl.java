@@ -1,51 +1,89 @@
 package com.example.demo.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Car;
-import com.example.demo.dao.CarDao;
+import com.example.demo.mapper.CarMapper;
 import com.example.demo.service.CarService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class CarServiceImpl implements CarService {
-    @Autowired
-    CarDao dao;
+    @Resource
+    CarMapper mapper;
 
     public int getCount() {
-        return dao.getCount();
+        int i = Math.toIntExact(mapper.selectCount(null));
+        return i;
     }
 
     public List<Car> getAllCars(int page, int limit) {
-        return dao.getAllCars(page,limit);
+        Page<Car> carPage = new Page<>(page,limit);
+        List<Car> carList = mapper.selectPage(carPage,null).getRecords();
+        return carList;
     }
 
     public int addCar(Car car) {
-        return dao.addCar(car);
+        return mapper.insert(car);
     }
 
     public int updateCar(Car car) {
-        return dao.updateCar(car);
+        return mapper.updateById(car);
     }
 
     public int delCar(int id) {
-        return dao.delCar(id);
+        return mapper.deleteById(id);
     }
 
     public int getCount(String name) {
-        return dao.getCount(name);
+        QueryWrapper<Car> wrapper = new QueryWrapper<>();
+        wrapper.like("name",name);
+        int i = Math.toIntExact(mapper.selectCount(wrapper));
+        return i;
     }
 
     public List<Car> findCar(int page, int limit, String name) {
-        return dao.findCar(page,limit,name);
+
+        //Page
+        Page<Car> page1 = new Page<>(page,limit);
+
+        //Wrapper
+        QueryWrapper<Car> wrapper = new QueryWrapper<>();
+        wrapper.like("name",name);
+
+        //List
+        List<Car> carList = mapper.selectPage(page1,wrapper).getRecords();
+
+        return carList;
     }
 
     public List<Car> getAllFreeCars(int type) {
-        return dao.getAllFreeCars(type);
+        QueryWrapper<Car> wrapper = new QueryWrapper<>();
+
+        //Wrapper
+        wrapper
+                .eq("status",0)
+                .like("type",type);
+
+        //List
+        List<Car> carList = mapper.selectList(wrapper);
+
+        return carList;
     }
 
     public int getFreeCount() {
-        return dao.getFreeCount();
+        QueryWrapper<Car> wrapper = new QueryWrapper<>();
+
+        //Wrapper
+        wrapper
+                .eq("status",0);
+
+        //List
+        int i = Math.toIntExact(mapper.selectCount(wrapper));
+
+        return i;
     }
 }
