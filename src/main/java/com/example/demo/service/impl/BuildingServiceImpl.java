@@ -42,17 +42,21 @@ public class BuildingServiceImpl implements BuildingService {
 
     //添加楼栋
     public int addBuilding(Building building) {
-        return dao.addBuilding(building);
+        building.setId(getCount()+1);
+        Integer result = mapper.insert(building);
+        return result;
     }
 
     //更新楼栋信息
     public int updateBuilding(Building building) {
-        return dao.updateBuilding(building);
+        int i = mapper.updateById(building);
+        return i;
     }
 
     //通过id删除楼栋
     public int delBuilding(int id) {
-        return dao.delBuilding(id);
+        int i = mapper.deleteById(id);
+        return i;
     }
 
     //建筑名的数量

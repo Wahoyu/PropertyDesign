@@ -13,16 +13,19 @@ public class BuildingDao {
     @Autowired
     JdbcTemplate template;
 
+    //添加楼栋
     public int addBuilding(Building building) {
         return template.update("insert into building values(null,?,?)",
                 building.getName(),building.getType());
     }
 
+    //更改楼栋信息
     public int updateBuilding(Building building) {
         return template.update("update building set `name` = ? ,`type` = ? where id = ?",
                 building.getName(),building.getType(),building.getId());
     }
 
+    //删除楼栋信息
     public int delBuilding(int id) {
         return template.update("DELETE from building where id=?",id);
     }
