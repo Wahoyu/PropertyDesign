@@ -3,11 +3,8 @@ package com.example.demo.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Building;
-import com.example.demo.dao.BuildingDao;
 import com.example.demo.mapper.BuildingMapper;
 import com.example.demo.service.BuildingService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,8 +12,6 @@ import java.util.List;
 
 @Service
 public class BuildingServiceImpl implements BuildingService {
-    @Autowired
-    BuildingDao dao;
     @Resource
     BuildingMapper mapper;
 
@@ -59,14 +54,33 @@ public class BuildingServiceImpl implements BuildingService {
         return i;
     }
 
-    //建筑名的数量
+    //相似建筑名的数量
     public int getCount(String name) {
-        return dao.getCount(name);
+        QueryWrapper<Building> wrapper = new QueryWrapper<>();
+        //此处使用MybatisPlus模糊查询,类似查询 %name%
+        wrapper.like("name",name);
+        Long count = mapper.selectCount(wrapper);
+        int i = Math.toIntExact(count);
+        return i;
     }
 
     //分页-通过名字查找建筑
     public List<Building> findBuilding(int page, int limit, String name) {
-        return dao.findBuilding(page,limit,name);
+
+        //生成page对象
+        Page<Building> p = new Page<>(page,limit);
+
+        //生成条件构造器
+        QueryWrapper<Building> wrapper = new QueryWrapper<>();
+        wrapper.like("name",name);
+
+        List<Building> buildings = mapper.selectPage(p,wrapper).getRecords();
+
+        if (buildings!=null){
+            return buildings;
+        }else{
+            return null;
+        }
     }
 
     //查询所有的建筑
