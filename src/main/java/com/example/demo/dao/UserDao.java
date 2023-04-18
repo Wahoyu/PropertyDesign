@@ -66,7 +66,7 @@ public class UserDao {
             return 0;
         }
         return template.update("insert into `user` values(null,?,?,?,?,?)",
-                user.getUsername(),"123456",user.getPhone(),user.getSex(),1);
+                user.getUsername(),user.getPassword(),user.getPhone(),user.getSex(),1);
     }
 
     public int updateUser(User user) {

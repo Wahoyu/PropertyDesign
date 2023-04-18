@@ -54,6 +54,7 @@
                     </div>
                 </div>
 
+
                 <!--&lt;!&ndash;验证滑块&ndash;&gt;-->
                 <!--<div class="layui-form-item">-->
                 <!--    <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i></label>-->
@@ -118,6 +119,13 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-block">
+                <input name="password" placeholder="请输入密码" type="password" class="layui-input" maxlength="20"
+                       lay-verType="tips" lay-verify="password" required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">性别</label>
             <div class="layui-input-block">
                 <input type="radio" name="sex" value="0" title="男" checked/>
@@ -151,7 +159,7 @@
         $('#btnAddReader').click(function () {
             showEditModel();
         });
-        // 显示表单弹窗
+        // 注册用户
         function showEditModel() {
                 admin.open({
                     type: 1,

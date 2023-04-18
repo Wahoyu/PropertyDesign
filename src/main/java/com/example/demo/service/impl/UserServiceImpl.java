@@ -29,7 +29,9 @@ public class UserServiceImpl implements UserService {
         return dao.findUser(page,limit,name);
     }
 
+    //
     public int addUser(User user) {
+
         return dao.addUser(user);
     }
 
