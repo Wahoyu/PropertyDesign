@@ -89,10 +89,27 @@
                 .then(response => response.json())
                 .then(data => {
                     const hitokoto = document.querySelector('#hitokoto_text')
+                    hitokoto.href = `https://hitokoto.cn/?uuid=${data.uuid}`
                     hitokoto.innerText = data.hitokoto
                 })
                 .catch(console.error)
         </script>
+        <!--公安ICP备案-->
+        <div class="beian">
+
+            <span>
+            <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener"></a>
+            </span>
+
+            <span>
+                <a href="https://beian.miit.gov.cn/" rel="nofollow noopener" class="beian-police" target="_blank" style=" padding-left: 0px; padding-right: 40px;">
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="../../assets/images/police_beian.png" alt="police-icon">
+
+            <span>津ICP备2022006903号-2</span>
+            </a>
+            </span>
+        </div>
     </div>
 </div>
 
