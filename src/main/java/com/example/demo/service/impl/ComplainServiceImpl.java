@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.eneity.Complain;
 import com.example.demo.dao.ComplainDao;
+import com.example.demo.mapper.ComplainMapper;
 import com.example.demo.service.ComplainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +13,12 @@ import java.util.List;
 public class ComplainServiceImpl implements ComplainService {
     @Autowired
     ComplainDao dao;
+
+    @Autowired
+    ComplainMapper mapper;
+
     public int getCount() {
-        return dao.getCount();
+        return Math.toIntExact(mapper.selectCount(null));
     }
 
     public List<Complain> getAllComplains(int page, int limit) {

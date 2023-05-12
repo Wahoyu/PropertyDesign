@@ -14,11 +14,14 @@ public class ComplainDao {
 
     @Autowired
     JdbcTemplate template;
-    public int getCount() {
-        int count = template.queryForObject("select count(*) from complain", Integer.class);
-        return count;
-    }
 
+//    public int getCount() {
+//        int count = template.queryForObject("select count(*) from complain", Integer.class);
+//        return count;
+//    }
+
+
+    //分页查询所有投诉信息
     public List<Complain> getAllComplains(int page, int limit) {
         List<Complain> list = template.query("select * from complain limit ?,?" ,new Object[]{(page-1)*limit,limit},
                 new BeanPropertyRowMapper(Complain.class));
