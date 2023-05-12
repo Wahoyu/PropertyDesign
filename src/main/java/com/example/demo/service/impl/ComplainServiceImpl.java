@@ -1,10 +1,15 @@
 package com.example.demo.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Complain;
 import com.example.demo.dao.ComplainDao;
+import com.example.demo.eneity.User;
 import com.example.demo.mapper.ComplainMapper;
+import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.ComplainService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,12 +22,32 @@ public class ComplainServiceImpl implements ComplainService {
     @Autowired
     ComplainMapper mapper;
 
+    @Autowired
+    UserMapper userMapper;
+
     public int getCount() {
         return Math.toIntExact(mapper.selectCount(null));
     }
 
     public List<Complain> getAllComplains(int page, int limit) {
-        return dao.getAllComplains(page,limit);
+
+        //分页查询
+        Page<Complain> p = new Page<>(page, limit);
+        List<Complain> list = mapper.selectPage(p,null).getRecords();
+        System.out.println(list);
+        //如果list不为空,添加user
+        if (list!=null){
+            for (Complain complain:list){
+                QueryWrapper<User> wrapper = new QueryWrapper<>();
+                wrapper.eq("id", complain.getUser_id());
+                User user = userMapper.selectOne(wrapper);
+                //List<User> users = template.query("select * from user where id = ?" , new Object[]{complain.getUser_id()}, new BeanPropertyRowMapper(User.class));
+                complain.setUser(user);
+            }
+            return list;
+        }else{
+            return null;
+        }
     }
 
     public int addComplain(Complain complain) {
