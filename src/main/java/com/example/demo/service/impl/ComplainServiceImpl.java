@@ -101,7 +101,9 @@ public class ComplainServiceImpl implements ComplainService {
     }
 
     public int getCountByUserId(Integer id) {
-        return dao.getCountByUserId(id);
+        QueryWrapper wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id",id);
+        return Math.toIntExact(mapper.selectCount(wrapper));
     }
 
     public int getCount(Integer id) {
