@@ -69,15 +69,35 @@ public class ComplainServiceImpl implements ComplainService {
         return mapper.deleteById(id);
     }
 
-    //根据投诉内容模糊进行匹配
+    //根据status查询数量
     public int getCount(String name) {
+        int status = Integer.parseInt(name);
         QueryWrapper wrapper = new QueryWrapper<>();
-        wrapper.like("content",name);
+        wrapper.eq("status",status);
         return Math.toIntExact(mapper.selectCount(wrapper));
     }
 
+    //根据status分页查询
     public List<Complain> findComplain(int page, int limit, String name) {
-        return dao.findComplain(page,limit,name);
+        //分页查询
+        Page<Complain> p = new Page<>(page, limit);
+        QueryWrapper wrapper2 = new QueryWrapper<>();
+        wrapper2.eq("status",name);
+        List<Complain> list = mapper.selectPage(p,wrapper2).getRecords();
+        System.out.println(list);
+        //如果list不为空,添加user
+        if (list!=null){
+            for (Complain complain:list){
+                QueryWrapper<User> wrapper = new QueryWrapper<>();
+                wrapper.eq("id", complain.getUser_id());
+                User user = userMapper.selectOne(wrapper);
+                //List<User> users = template.query("select * from user where id = ?" , new Object[]{complain.getUser_id()}, new BeanPropertyRowMapper(User.class));
+                complain.setUser(user);
+            }
+            return list;
+        }else{
+            return null;
+        }
     }
 
     public int getCountByUserId(Integer id) {
