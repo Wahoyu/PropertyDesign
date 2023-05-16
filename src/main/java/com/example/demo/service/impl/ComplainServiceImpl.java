@@ -66,7 +66,7 @@ public class ComplainServiceImpl implements ComplainService {
 
     //删除
     public int delComplain(int id) {
-        return dao.delComplain(id);
+        return mapper.deleteById(id);
     }
 
     //
