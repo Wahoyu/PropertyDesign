@@ -59,14 +59,17 @@ public class ComplainServiceImpl implements ComplainService {
         return mapper.insert(complain);
     }
 
+    //更新投诉信息
     public int updateComplain(Complain complain) {
-        return dao.updateComplain(complain);
+        return mapper.updateById(complain);
     }
 
+    //删除
     public int delComplain(int id) {
         return dao.delComplain(id);
     }
 
+    //
     public int getCount(String name) {
         return dao.getCount(name);
     }
