@@ -69,9 +69,11 @@ public class ComplainServiceImpl implements ComplainService {
         return mapper.deleteById(id);
     }
 
-    //
+    //根据投诉内容模糊进行匹配
     public int getCount(String name) {
-        return dao.getCount(name);
+        QueryWrapper wrapper = new QueryWrapper<>();
+        wrapper.like("content",name);
+        return Math.toIntExact(mapper.selectCount(wrapper));
     }
 
     public List<Complain> findComplain(int page, int limit, String name) {

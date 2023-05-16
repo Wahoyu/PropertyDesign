@@ -39,24 +39,24 @@ public class ComplainDao {
 //        }
 //    }
 
-    public int addComplain(Complain complain) {
-        return template.update("insert into complain values(null,?,?,?,?,?)",
-                complain.getContent(),complain.getUser_id(),0,new Date(),complain.getResult());
-    }
+//    public int addComplain(Complain complain) {
+//        return template.update("insert into complain values(null,?,?,?,?,?)",
+//                complain.getContent(),complain.getUser_id(),0,new Date(),complain.getResult());
+//    }
+//
+//    public int updateComplain(Complain complain) {
+//        return template.update("update complain set `status` = ?,`result` = ?  where id = ?",
+//                complain.getStatus(),complain.getResult(),complain.getId());
+//    }
+//
+//    public int delComplain(int id) {
+//        return template.update("DELETE from complain where id=?",id);
+//    }
 
-    public int updateComplain(Complain complain) {
-        return template.update("update complain set `status` = ?,`result` = ?  where id = ?",
-                complain.getStatus(),complain.getResult(),complain.getId());
-    }
-
-    public int delComplain(int id) {
-        return template.update("DELETE from complain where id=?",id);
-    }
-
-    public int getCount(String name) {
-        int count = template.queryForObject("select count(*) from complain where content like '%"+name+"%' ", Integer.class);
-        return count;
-    }
+//    public int getCount(String name) {
+//        int count = template.queryForObject("select count(*) from complain where content like '%"+name+"%' ", Integer.class);
+//        return count;
+//    }
 
     public List<Complain> findComplain(int page, int limit, String name) {
         List<Complain> list = template.query("select * from complain where status = "+name+" limit ?,?" ,new Object[]{(page-1)*limit,limit},
