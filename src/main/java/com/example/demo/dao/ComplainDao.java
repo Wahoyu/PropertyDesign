@@ -22,22 +22,22 @@ public class ComplainDao {
 
 
     //分页查询所有投诉信息
-    public List<Complain> getAllComplains(int page, int limit) {
-
-        //对投诉表进行分页查询
-        List<Complain> list = template.query("select * from complain limit ?,?" ,new Object[]{(page-1)*limit,limit}, new BeanPropertyRowMapper(Complain.class));
-
-        //如果列表不为空,对每一个comlain对象添加
-        if (list!=null){
-            for (Complain complain:list){
-                List<User> users = template.query("select * from user where id = ?" , new Object[]{complain.getUser_id()}, new BeanPropertyRowMapper(User.class));
-                complain.setUser(users.get(0));
-            }
-            return list;
-        }else{
-            return null;
-        }
-    }
+//    public List<Complain> getAllComplains(int page, int limit) {
+//
+//        //对投诉表进行分页查询
+//        List<Complain> list = template.query("select * from complain limit ?,?" ,new Object[]{(page-1)*limit,limit}, new BeanPropertyRowMapper(Complain.class));
+//
+//        //如果列表不为空,对每一个comlain对象添加
+//        if (list!=null){
+//            for (Complain complain:list){
+//                List<User> users = template.query("select * from user where id = ?" , new Object[]{complain.getUser_id()}, new BeanPropertyRowMapper(User.class));
+//                complain.setUser(users.get(0));
+//            }
+//            return list;
+//        }else{
+//            return null;
+//        }
+//    }
 
     public int addComplain(Complain complain) {
         return template.update("insert into complain values(null,?,?,?,?,?)",

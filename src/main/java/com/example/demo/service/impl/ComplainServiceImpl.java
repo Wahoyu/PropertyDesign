@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -50,8 +52,11 @@ public class ComplainServiceImpl implements ComplainService {
         }
     }
 
+    //添加投诉信息
     public int addComplain(Complain complain) {
-        return dao.addComplain(complain);
+        complain.setStatus(0);
+        complain.setTime(new Date());
+        return mapper.insert(complain);
     }
 
     public int updateComplain(Complain complain) {
