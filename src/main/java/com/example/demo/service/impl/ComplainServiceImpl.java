@@ -3,23 +3,18 @@ package com.example.demo.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Complain;
-import com.example.demo.dao.ComplainDao;
 import com.example.demo.eneity.User;
 import com.example.demo.mapper.ComplainMapper;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.ComplainService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class ComplainServiceImpl implements ComplainService {
-    @Autowired
-    ComplainDao dao;
 
     @Autowired
     ComplainMapper mapper;

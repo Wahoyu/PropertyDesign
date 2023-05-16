@@ -1,5 +1,6 @@
 package com.example.demo.eneity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ public class Repair {
     Integer status;
     Date time;
     Integer user_id;
+    @TableField(exist = false)
     User user;
     String result;
 }
