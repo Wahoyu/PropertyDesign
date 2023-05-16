@@ -27,10 +27,12 @@ public class ComplainServiceImpl implements ComplainService {
     @Autowired
     UserMapper userMapper;
 
+    //获取所有的投诉数量
     public int getCount() {
         return Math.toIntExact(mapper.selectCount(null));
     }
 
+    //获取所有的投诉信息
     public List<Complain> getAllComplains(int page, int limit) {
 
         //分页查询
@@ -100,17 +102,42 @@ public class ComplainServiceImpl implements ComplainService {
         }
     }
 
+    //用户查看自己的投诉数量
     public int getCountByUserId(Integer id) {
         QueryWrapper wrapper = new QueryWrapper<>();
         wrapper.eq("user_id",id);
         return Math.toIntExact(mapper.selectCount(wrapper));
     }
 
+    //与上面的方式相同
     public int getCount(Integer id) {
-        return dao.getCount(id);
+        QueryWrapper wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id",id);
+        return Math.toIntExact(mapper.selectCount(wrapper));
     }
 
+    //用户获取自己的投诉信息表
     public List<Complain> getAllComplainsByUser(int page, int limit, Integer id) {
-        return dao.getAllComplainsByUser(page,limit,id);
+        //分页查询
+        Page<Complain> p = new Page<>(page, limit);
+        //对用户id进行限制
+        QueryWrapper wrapper2 = new QueryWrapper();
+        wrapper2.eq("user_id", id);
+
+        List<Complain> list = mapper.selectPage(p,wrapper2).getRecords();
+        System.out.println(list);
+        //如果list不为空,添加user
+        if (list!=null){
+            for (Complain complain:list){
+                QueryWrapper<User> wrapper = new QueryWrapper<>();
+                wrapper.eq("id", complain.getUser_id());
+                User user = userMapper.selectOne(wrapper);
+                //List<User> users = template.query("select * from user where id = ?" , new Object[]{complain.getUser_id()}, new BeanPropertyRowMapper(User.class));
+                complain.setUser(user);
+            }
+            return list;
+        }else{
+            return null;
+        }
     }
 }
