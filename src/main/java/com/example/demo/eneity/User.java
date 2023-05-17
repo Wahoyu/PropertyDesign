@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class User {
     @TableId(type = IdType.AUTO)
     Integer id;
+    @TableField("username")
     String username;
     String password;
     String phone;
