@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Payment;
 import com.example.demo.dao.PaymentDao;
@@ -33,31 +34,39 @@ public class PaymentServiceImpl implements PaymentService {
 
     //添加收费项
     public int addPayment(Payment payment) {
-        return dao.addPayment(payment);
+        return mapper.insert(payment);
     }
 
     //更新收费项信息
     public int updatePayment(Payment payment) {
-        return dao.updatePayment(payment);
+        return mapper.updateById(payment);
     }
 
     //删除收费项信息
     public int delPayment(int id) {
-        return dao.delPayment(id);
+        return mapper.deleteById(id);
     }
 
     //通过name属性模糊查询,收费项数目
     public int getCount(String name) {
-        return dao.getCount(name);
+        QueryWrapper<Payment> wrapper = new QueryWrapper<>();
+        wrapper.like("name", name);
+        return Math.toIntExact(mapper.selectCount(wrapper));
     }
 
     //根据name模糊,分页查询收费项信息
     public List<Payment> findPayment(int page, int limit, String name) {
-        return dao.findPayment(page,limit,name);
+        QueryWrapper<Payment> wrapper = new QueryWrapper<>();
+        wrapper.like("name", name);
+
+        Page<Payment> p1 = new Page<>(page, limit);
+
+        List<Payment> payments = mapper.selectPage(p1, wrapper).getRecords();
+        return payments;
     }
 
     //查看所有的收费项信息select *
     public List<Payment> getAllPayments() {
-        return dao.getAllPayments();
+        return mapper.selectList(null);
     }
 }
