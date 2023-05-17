@@ -2,15 +2,11 @@ package com.example.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.demo.dao.UnitDao;
 import com.example.demo.eneity.*;
-import com.example.demo.dao.UnitDao;
 import com.example.demo.eneity.Unit;
 import com.example.demo.mapper.BuildingMapper;
 import com.example.demo.mapper.UnitMapper;
 import com.example.demo.service.UnitService;
-import com.example.demo.service.UnitService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,8 +14,6 @@ import java.util.List;
 
 @Service
 public class UnitServiceImpl implements UnitService {
-    @Autowired
-    UnitDao dao;
     @Resource
     UnitMapper mapper;
 
