@@ -54,17 +54,17 @@ public class UnitServiceImpl implements UnitService {
 
     //添加单元信息
     public int addUnit(Unit unit) {
-        return dao.addUnit(unit);
+        return mapper.insert(unit);
     }
 
     //更新单元信息
     public int updateUnit(Unit unit) {
-        return dao.updateUnit(unit);
+        return mapper.updateById(unit);
     }
 
     //删除单元信息
     public int delUnit(int id) {
-        return dao.delUnit(id);
+        return mapper.deleteById(id);
     }
 
     //通过名字模糊查询单元,分页显示
