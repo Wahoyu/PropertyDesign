@@ -3,10 +3,8 @@ package com.example.demo.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.*;
-import com.example.demo.dao.User_RoomDao;
 import com.example.demo.mapper.*;
 import com.example.demo.service.User_RoomService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,8 +12,6 @@ import java.util.Date;
 import java.util.List;
 @Service
 public class User_RoomServiceImpl implements User_RoomService {
-    @Autowired
-    User_RoomDao dao;
     @Resource
     User_RoomMapper mapper;
     @Resource
