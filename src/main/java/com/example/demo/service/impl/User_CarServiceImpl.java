@@ -85,7 +85,7 @@ public class User_CarServiceImpl implements User_CarService {
         //2
         QueryWrapper<Car> carWrapper = new QueryWrapper<>();
         wrapper.eq("id", user_car.getCar_id());
-        Car car = carMapper.selectOne(carWrapper);
+        Car car = carMapper.selectList(carWrapper).get(0);
         car.setStatus(0);
         carMapper.updateById(car);
     }
