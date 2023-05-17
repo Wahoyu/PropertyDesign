@@ -69,16 +69,51 @@ public class UnitServiceImpl implements UnitService {
 
     //通过名字模糊查询单元,分页显示
     public List<Unit> findUnit(int page, int limit, String name) {
-        return dao.findUnit(page,limit,name);
+        //分页查询
+        Page<Unit> p = new Page<>(page, limit);
+
+        //名字模糊查询
+        QueryWrapper<Unit> wrapper2 = new QueryWrapper<>();
+        wrapper2.like("name", name);
+
+        List<Unit> list = mapper.selectPage(p,wrapper2).getRecords();
+        System.out.println(list);
+
+        //如果list不为空,添加user
+        if (list!=null){
+            for (Unit unit:list){
+                QueryWrapper<Building> wrapper = new QueryWrapper<>();
+                wrapper.eq("id", unit.getBuilding_id());
+                Building building = buildingMapper.selectOne(wrapper);
+                unit.setBuilding(building);
+            }
+            return list;
+        }else{
+            return null;
+        }
     }
 
     //根据名字模糊查询,总数
     public int getCount(String name) {
-        return dao.getCount(name);
+        QueryWrapper<Unit> wrapper = new QueryWrapper<>();
+        wrapper.like("name", name);
+        return Math.toIntExact(mapper.selectCount(wrapper));
     }
 
     //获取到所有单元的列表信息
     public List<Unit> getAllUnits() {
-        return dao.getAllUnits();
+        List<Unit> list = mapper.selectList(null);
+        //如果list不为空,添加user
+        if (list!=null){
+            for (Unit unit:list){
+                QueryWrapper<Building> wrapper = new QueryWrapper<>();
+                wrapper.eq("id", unit.getBuilding_id());
+                Building building = buildingMapper.selectOne(wrapper);
+                unit.setBuilding(building);
+            }
+            return list;
+        }else{
+            return null;
+        }
     }
 }
