@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Complain;
 import com.example.demo.mapper.ComplainMapper;
+import com.example.demo.service.User_CarService;
+import com.example.demo.service.impl.User_CarServiceImpl;
 import com.example.demo.util.Similarity;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -20,6 +22,8 @@ class DemoApplicationTests {
 
     @Autowired
     ComplainMapper mapper;
+    @Autowired
+    User_CarService user_carService;
 
     @Test
     void contextLoads() {
@@ -27,5 +31,10 @@ class DemoApplicationTests {
         List<Complain> complainList = mapper.selectPage(page,null).getRecords();
         System.out.println(complainList);
     }
+    @Test
+    void findCarRecordById() {
+        System.out.println(user_carService.findCar(2));
+    }
+
 
 }

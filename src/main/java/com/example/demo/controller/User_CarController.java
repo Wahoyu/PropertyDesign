@@ -43,10 +43,10 @@ public class User_CarController {
         ResBody resBody = new ResBody();
         System.out.println(user_car);
         user_car.setUser_id(user_car.getId());
-        //判断该用户当前有无房间，如果有，先退房再入住。
+        //判断该用户当前有无车位，如果有，先将前面的绑定关系取消。
         int count = service.findCar(user_car.getUser_id());
         if (count == 1){
-            service.outCar(user_car.getUser_id());
+            service.delUserCar(user_car.getUser_id());
         }
         int i = service.fenpei(user_car.getUser_id(),user_car.getCar_id());
         if (i == 1){

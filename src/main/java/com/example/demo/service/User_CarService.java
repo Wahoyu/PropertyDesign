@@ -11,7 +11,7 @@ public interface User_CarService {
 
     public int findCar(Integer user_id);
 
-    public void outCar(Integer user_id);
+    public void delUserCar(Integer user_id);
 
     public int fenpei(Integer user_id, Integer car_id);
 
