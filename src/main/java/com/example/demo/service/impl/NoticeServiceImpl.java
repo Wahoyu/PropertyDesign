@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Admin;
@@ -79,16 +80,48 @@ public class NoticeServiceImpl implements NoticeService {
 
     //通过title进行模糊获取
     public int getCount(String name) {
-        return dao.getCount(name);
+        QueryWrapper<Notice> wrapper = new QueryWrapper<>();
+        wrapper.like("title", name);
+        return Math.toIntExact(mapper.selectCount(wrapper));
     }
 
     //通过title模糊,分页查询公告
     public List<Notice> findNotice(int page, int limit, String name) {
-        return dao.findNotice(page,limit,name);
+        //分页查询
+        Page<Notice> p = new Page<>(page, limit);
+
+        //对name进行模糊匹配
+        QueryWrapper<Notice> wrapper3 = new QueryWrapper<>();
+        wrapper3.like("title", name);
+
+        List<Notice> list = mapper.selectPage(p,wrapper3).getRecords();
+        System.out.println(list);
+        //如果list不为空,添加user
+        if (list!=null){
+            for (Notice notice:list){
+                QueryWrapper<Admin> wrapper = new QueryWrapper<>();
+                wrapper.eq("id", notice.getCreateBy());
+                Admin admin = adminMapper.selectOne(wrapper);
+                notice.setCreate_admin(admin);
+            }
+            for (Notice notice:list){
+                QueryWrapper<Admin> wrapper2 = new QueryWrapper<>();
+                wrapper2.eq("id", notice.getUpdateBy());
+                Admin admin = adminMapper.selectOne(wrapper2);
+                notice.setUpdate_admin(admin);
+            }
+            return list;
+        }else{
+            return null;
+        }
     }
 
-    //查询status为0的公告
+    //查询status为0的公告list的头一个
+    //用户查看公告
     public Notice getNotice() {
-        return dao.getNotice();
+        QueryWrapper<Notice> wrapper = new QueryWrapper<>();
+        wrapper.eq("status",0);
+        List<Notice> noticeList = mapper.selectList(wrapper);
+        return noticeList.get(0);
     }
 }
