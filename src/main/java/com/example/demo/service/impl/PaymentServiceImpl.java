@@ -1,11 +1,14 @@
 package com.example.demo.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Payment;
 import com.example.demo.dao.PaymentDao;
+import com.example.demo.mapper.PaymentMapper;
 import com.example.demo.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
@@ -13,14 +16,19 @@ public class PaymentServiceImpl implements PaymentService {
     @Autowired
     PaymentDao dao;
 
+    @Resource
+    PaymentMapper mapper;
+
     //获取全部收费项数量
     public int getCount() {
-        return dao.getCount();
+        return Math.toIntExact(mapper.selectCount(null));
     }
 
     //分页查看收费项
     public List<Payment> getAllPayments(int page, int limit) {
-        return dao.getAllPayments(page,limit);
+        Page<Payment> page1 = new Page<>(page, limit);
+        List<Payment> payments = mapper.selectPage(page1, null).getRecords();
+        return payments;
     }
 
     //添加收费项
