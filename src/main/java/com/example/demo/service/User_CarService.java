@@ -13,7 +13,7 @@ public interface User_CarService {
 
     public void delUserCar(Integer user_id);
 
-    public int fenpei(Integer user_id, Integer car_id);
+    public int addUserCar(Integer user_id, Integer car_id);
 
     public int stopCarByUserId(int id);
 }

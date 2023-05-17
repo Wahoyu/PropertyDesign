@@ -245,7 +245,7 @@
                 doDel(data.id, data.username);
             } else if (layEvent === 'room') { // 分配房间
                 showRoomModel(data);
-            } else if (layEvent === 'car') { // 分配房间
+            } else if (layEvent === 'car') { // 分配车位
                 showCarModel(data);
             } else if (layEvent === 'delCar') { // 停用
                 doDelCar(data.id);
@@ -333,7 +333,7 @@
                     });
 
                     $(layero).children('.layui-layer-content').css('overflow', 'visible');
-                    var url = '/api/fenpeiCar';
+                    var url = '/api/addUserCar';
                     // 回显数据
                     form.val('modelCarForm', data);
                     // 表单提交事件

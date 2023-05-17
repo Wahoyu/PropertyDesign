@@ -22,8 +22,6 @@ import java.util.List;
 
 @Service
 public class User_CarServiceImpl implements User_CarService {
-    @Autowired
-    User_CarDao dao;
     @Resource
     User_CarMapper mapper;
     @Resource
@@ -97,11 +95,47 @@ public class User_CarServiceImpl implements User_CarService {
         carMapper.updateById(car);
     }
 
-    public int fenpei(Integer user_id, Integer car_id) {
-        return dao.fenpei(user_id,car_id);
+    //给用户分配车位信息(添加用户和车位的绑定关系)
+    public int addUserCar(Integer user_id, Integer car_id) {
+        /*
+        1. 添加user_car对象
+        2. 更改车位状态
+         */
+
+        //1
+        User_Car user_car = new User_Car();
+        user_car.setUser_id(user_id);
+        user_car.setCar_id(car_id);
+        user_car.setInTime(new Date());
+        mapper.insert(user_car);
+
+        //2
+        QueryWrapper<Car> wrapper = new QueryWrapper<>();
+        wrapper.eq("id", car_id);
+        Car car = carMapper.selectOne(wrapper);
+        car.setStatus(1);
+        return carMapper.updateById(car);
     }
 
     public int stopCarByUserId(int id) {
-        return dao.stopCarByUserId(id);
+        /*
+        1. 取消user_id对应的绑定关系
+        2. 将车位的status改成0
+         */
+
+        //1
+        QueryWrapper<User_Car> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id", id);
+        wrapper.last("AND outTime is null");
+        User_Car user_car = mapper.selectOne(wrapper);
+        user_car.setOutTime(new Date());
+        mapper.updateById(user_car);
+
+        //2
+        QueryWrapper<Car> carWrapper = new QueryWrapper<>();
+        wrapper.eq("id", user_car.getCar_id());
+        Car car = carMapper.selectList(carWrapper).get(0);
+        car.setStatus(0);
+        return carMapper.updateById(car);
     }
 }

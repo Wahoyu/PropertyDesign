@@ -38,8 +38,8 @@ public class User_CarController {
         return resBody;
     }
 
-    @PostMapping("/api/fenpeiCar")
-    public ResBody fenpeiCar(@RequestBody User_Car user_car) {
+    @PostMapping("/api/addUserCar")
+    public ResBody addUserCar(@RequestBody User_Car user_car) {
         ResBody resBody = new ResBody();
         System.out.println(user_car);
         user_car.setUser_id(user_car.getId());
@@ -48,7 +48,7 @@ public class User_CarController {
         if (count == 1){
             service.delUserCar(user_car.getUser_id());
         }
-        int i = service.fenpei(user_car.getUser_id(),user_car.getCar_id());
+        int i = service.addUserCar(user_car.getUser_id(),user_car.getCar_id());
         if (i == 1){
             resBody.setCode(200);
             resBody.setMsg("添加成功");
