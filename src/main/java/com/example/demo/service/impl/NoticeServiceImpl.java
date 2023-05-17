@@ -1,27 +1,19 @@
 package com.example.demo.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Admin;
-import com.example.demo.eneity.Complain;
 import com.example.demo.eneity.Notice;
-import com.example.demo.dao.NoticeDao;
-import com.example.demo.eneity.User;
 import com.example.demo.mapper.AdminMapper;
 import com.example.demo.mapper.NoticeMapper;
 import com.example.demo.service.NoticeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class NoticeServiceImpl implements NoticeService {
-    @Autowired
-    NoticeDao dao;
     @Resource
     NoticeMapper mapper;
 
