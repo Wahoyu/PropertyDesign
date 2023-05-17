@@ -1,19 +1,14 @@
 package com.example.demo.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Car;
 import com.example.demo.eneity.User;
 import com.example.demo.eneity.User_Car;
-import com.example.demo.dao.User_CarDao;
 import com.example.demo.mapper.CarMapper;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.mapper.User_CarMapper;
-import com.example.demo.service.CarService;
 import com.example.demo.service.User_CarService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
