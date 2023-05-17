@@ -3,10 +3,8 @@ package com.example.demo.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Payment;
-import com.example.demo.dao.PaymentDao;
 import com.example.demo.mapper.PaymentMapper;
 import com.example.demo.service.PaymentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,8 +12,6 @@ import java.util.List;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
-    @Autowired
-    PaymentDao dao;
 
     @Resource
     PaymentMapper mapper;
