@@ -23,7 +23,7 @@ public class BuildingServiceImpl implements BuildingService {
 
     //分页-查询所有的楼栋
     public List<Building> getAllBuildings(int page, int limit) {
-        Page<Building> buildingPage = new Page<>(1,5);
+        Page<Building> buildingPage = new Page<>(page,limit);
         mapper.selectPage(buildingPage,null);
 
         List<Building> list = buildingPage.getRecords();

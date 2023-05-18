@@ -8,8 +8,10 @@ layui.define(["layer"], function (f) {
     var i = ".layui-layout-admin>.layui-header";
     var b = "admin-pagetabs";
     var d = "admin-side-nav";
+    //默认主题?改了好像没用
     var c = "theme-admin";
     var m = {
+        //默认主题?改了好像没用
         version: "314", defaultTheme: "theme-admin", tableName: "easyweb", flexible: function (n) {
             if (window != top && !m.isTop()) {
                 if (top.layui && top.layui.admin) {
