@@ -4,15 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Payment;
 import com.example.demo.eneity.User;
-import com.example.demo.eneity.User_Car;
 import com.example.demo.eneity.User_Payment;
-import com.example.demo.dao.User_PaymentDao;
 import com.example.demo.mapper.PaymentMapper;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.mapper.User_PaymentMapper;
 import com.example.demo.service.User_PaymentService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,11 +17,8 @@ import java.util.List;
 
 @Service
 public class User_PaymentServiceImpl implements User_PaymentService {
-    @Autowired
-    User_PaymentDao dao;
     @Resource
     User_PaymentMapper mapper;
-
     @Resource
     UserMapper userMapper;
     @Resource
