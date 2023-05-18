@@ -155,7 +155,10 @@ body {
 
 /** 辅助样式 */
 .layui-link {
-    color: #029789 !important;
+    /*字体颜色,此处被覆盖*/
+    color: #1890FF !important;
+    /*color: #029789 !important; */
+
 }
 
 .layui-link:hover {
