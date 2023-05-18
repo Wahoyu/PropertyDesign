@@ -136,10 +136,17 @@ public class User_PaymentServiceImpl implements User_PaymentService {
         return Math.toIntExact(mapper.selectCount(wrapper));
     }
 
-    //用户缴费后,将status改为1
-    public int jiaofei(int id) {
+    //缴费后,将status改为1
+    public int payForIt(int id) {
         User_Payment userPayment = mapper.selectById(id);
         userPayment.setStatus(1);
+        return mapper.updateById(userPayment);
+    }
+
+    //取消缴费,将status改为0
+    public int delPay(int id) {
+        User_Payment userPayment = mapper.selectById(id);
+        userPayment.setStatus(0);
         return mapper.updateById(userPayment);
     }
 }

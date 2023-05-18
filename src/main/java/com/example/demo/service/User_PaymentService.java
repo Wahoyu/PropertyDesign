@@ -23,5 +23,7 @@ public interface User_PaymentService {
 
     public int getCount(int user_id);
 
-    public int jiaofei(int id);
+    public int payForIt(int id);
+
+    public int delPay(int id);
 }

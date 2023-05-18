@@ -70,10 +70,11 @@ public class User_PaymentController {
         return resBody;
     }
 
-    @GetMapping("/api/jiaofei")
-    public ResBody jiaofei(@RequestParam int id) {
+    //确认用户缴费状态
+    @GetMapping("/api/payForIt")
+    public ResBody payForIt(@RequestParam int id) {
         ResBody resBody = new ResBody();
-        int i = service.jiaofei(id);
+        int i = service.payForIt(id);
         if (i == 1){
             resBody.setCode(200);
             resBody.setMsg("成功");
@@ -83,4 +84,27 @@ public class User_PaymentController {
         }
         return resBody;
     }
+
+    //取消用户缴费状态
+    @GetMapping("/api/delPay")
+    public ResBody delPay(@RequestParam int id) {
+        ResBody resBody = new ResBody();
+        int i = service.delPay(id);
+        if (i == 1){
+            resBody.setCode(200);
+            resBody.setMsg("成功");
+        }else {
+            resBody.setCode(500);
+            resBody.setMsg("失败");
+        }
+        return resBody;
+    }
+
+
+
+
+
+
+
+
 }
