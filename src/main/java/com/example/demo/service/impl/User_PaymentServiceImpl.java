@@ -30,7 +30,6 @@ public class User_PaymentServiceImpl implements User_PaymentService {
         user_payment.setUser_id(user_id);
         user_payment.setPayment_id(payment_id);
         user_payment.setValue(value);
-        user_payment.setTime(new Date());
         user_payment.setStatus(0);
         return mapper.insert(user_payment);
     }
@@ -140,6 +139,7 @@ public class User_PaymentServiceImpl implements User_PaymentService {
     public int payForIt(int id) {
         User_Payment userPayment = mapper.selectById(id);
         userPayment.setStatus(1);
+        userPayment.setTime(new Date());
         return mapper.updateById(userPayment);
     }
 
@@ -147,6 +147,7 @@ public class User_PaymentServiceImpl implements User_PaymentService {
     public int delPay(int id) {
         User_Payment userPayment = mapper.selectById(id);
         userPayment.setStatus(0);
+        userPayment.setTime(null);
         return mapper.updateById(userPayment);
     }
 }
