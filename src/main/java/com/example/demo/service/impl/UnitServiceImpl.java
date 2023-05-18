@@ -29,7 +29,10 @@ public class UnitServiceImpl implements UnitService {
     public List<Unit> getAllUnits(int page, int limit) {
         //分页查询
         Page<Unit> p = new Page<>(page, limit);
-        List<Unit> list = mapper.selectPage(p,null).getRecords();
+        //
+        QueryWrapper<Unit> wrapper1 = new QueryWrapper<>();
+        wrapper1.orderByAsc("name");
+        List<Unit> list = mapper.selectPage(p,wrapper1).getRecords();
         System.out.println(list);
 
         //如果list不为空,添加user
@@ -69,6 +72,7 @@ public class UnitServiceImpl implements UnitService {
         //名字模糊查询
         QueryWrapper<Unit> wrapper2 = new QueryWrapper<>();
         wrapper2.like("name", name);
+        wrapper2.orderByAsc("name");
 
         List<Unit> list = mapper.selectPage(p,wrapper2).getRecords();
         System.out.println(list);
@@ -96,7 +100,9 @@ public class UnitServiceImpl implements UnitService {
 
     //获取到所有单元的列表信息
     public List<Unit> getAllUnits() {
-        List<Unit> list = mapper.selectList(null);
+        QueryWrapper<Unit> wrapper1 = new QueryWrapper<>();
+        wrapper1.orderByAsc("name");
+        List<Unit> list = mapper.selectList(wrapper1);
         //如果list不为空,添加user
         if (list!=null){
             for (Unit unit:list){
