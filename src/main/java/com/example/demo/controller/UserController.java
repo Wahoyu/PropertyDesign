@@ -83,12 +83,12 @@ public class UserController {
     }
 
     @PostMapping("/api/loginByPassword")
-    public ResBody loginByPassword(@RequestBody Map<String, Object> params,
-                                   HttpSession session) {
-
+    public ResBody loginByPassword(@RequestBody Map<String, Object> params, HttpSession session) {
         ResBody resBody = new ResBody();
+
         String phone = params.get("phone").toString();
         String password = params.get("password").toString();
+
         User user = service.loginByPassword(phone,password);
 
         if (user == null){

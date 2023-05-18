@@ -17,7 +17,9 @@ public class AdminServiceImpl implements AdminService {
 
     //Loading : Find admin object by email&password
     public Admin findAdmin(String email, String password) {
+
         QueryWrapper<Admin> wrapper = new QueryWrapper<>();
+
         wrapper.eq("email",email);
         wrapper.eq("password",password);
 

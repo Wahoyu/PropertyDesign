@@ -223,7 +223,11 @@ public class UserServiceImpl implements UserService {
         List<User> userList = mapper.selectList(wrapper);
 
         //
-        return userList.get(0);
+        if (userList!=null && userList.size()>0){
+            return userList.get(0);
+        }else{
+            return null;
+        }
     }
 
     //用户更改密码
