@@ -123,17 +123,17 @@
                         <div class="user-info-head" id="imgHead">
                             <img src="../../assets/images/head.png"/>
                         </div>
-                        <h2 style="padding-top: 20px;">[[${session.admin.username}]]</h2>
+                        <h2 style="padding-top: 20px;">[[${session.user.username}]]</h2>
                         <p style="padding-top: 8px;">这个人太懒了,还没有设置个性签名.</p>
                     </div>
                     <div class="layui-text" style="padding-top: 30px;">
                         <div class="info-list-item">
                             <i class="layui-icon layui-icon-username"></i>
-                            <p>Manager</p>
+                            <p>User.</p>
                         </div>
                         <div class="info-list-item">
                             <i class="layui-icon layui-icon-release"></i>
-                            <p>樱桃小区物业管理办公室</p>
+                            <p>樱桃小区业主</p>
                         </div>
                         <div class="info-list-item">
                             <i class="layui-icon layui-icon-location"></i>
@@ -143,9 +143,8 @@
                     <div class="dash"></div>
                     <h3>标签</h3>
                     <div class="layui-badge-list" style="padding-top: 6px;">
-                        <span class="layui-badge layui-bg-gray">摩羯座</span>
-                        <span class="layui-badge layui-bg-gray">专注设计</span>
-                        <span class="layui-badge layui-bg-gray">无厘头</span>
+                        <span class="layui-badge layui-bg-gray">新时代</span>
+                        <span class="layui-badge layui-bg-gray">新青年</span>
                     </div>
                 </div>
             </div>
@@ -165,16 +164,9 @@
 
                                 <div class="layui-form user-info-form layui-text" style="max-width: 400px;padding-top: 25px;">
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">邮箱:</label>
-                                        <div class="layui-input-block">
-                                            <input type="text" name="email" th:value="${session.admin.email}"
-                                                   class="layui-input" lay-verify="required" required/>
-                                        </div>
-                                    </div>
-                                    <div class="layui-form-item">
                                         <label class="layui-form-label">昵称:</label>
                                         <div class="layui-input-block">
-                                            <input type="text" name="name" th:value="${session.admin.username}"
+                                            <input type="text" name="name" th:value="${session.user.username}"
                                                    class="layui-input" lay-verify="required" required/>
                                         </div>
                                     </div>
@@ -197,7 +189,7 @@
                                             <input type="text" name="phone1" value="086" style="width: 60px;"
                                                    class="layui-input" lay-verify="required" required/>
                                             <div style="position: absolute;left: 65px;right: 0;top: 0;">
-                                                <input type="text" name="phone2" th:value="${session.admin.phone}" class="layui-input"
+                                                <input type="text" name="phone2" th:value="${session.user.phone}" class="layui-input"
                                                        lay-verify="required" required/>
                                             </div>
                                         </div>
@@ -218,14 +210,14 @@
                                     <div class="bd-list-item">
                                         <div class="bd-list-item-content">
                                             <div class="bd-list-item-lable">密保手机</div>
-                                            <div class="bd-list-item-text">已绑定手机：180****1026</div>
+                                            <div class="bd-list-item-text">已绑定手机：[[${session.user.phone}]]</div>
                                         </div>
                                         <a class="bd-list-item-oper">修改</a>
                                     </div>
                                     <div class="bd-list-item">
                                         <div class="bd-list-item-content">
                                             <div class="bd-list-item-lable">密保邮箱</div>
-                                            <div class="bd-list-item-text">已绑定邮箱：[[${session.admin.email}]]</div>
+                                            <div class="bd-list-item-text">当前未绑定邮箱</div>
                                         </div>
                                         <a class="bd-list-item-oper">修改</a>
                                     </div>
