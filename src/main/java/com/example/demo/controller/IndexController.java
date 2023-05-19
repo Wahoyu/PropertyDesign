@@ -91,9 +91,16 @@ public class IndexController {
         return "page/tpl/tpl-note";
     }
 
+    //管理员用户信息
     @GetMapping("/user-info")
     public String userinfo(){
         return "page/admin/user-info";
+    }
+
+    //管理员用户信息
+    @GetMapping("/true-user-info")
+    public String trueUserinfo(){
+        return "page/user/user-info";
     }
 
     @GetMapping("/building")
@@ -124,6 +131,16 @@ public class IndexController {
     @GetMapping("/complain")
     public String complain(){
         return "page/admin/complain";
+    }
+
+    @GetMapping("/userRepair")
+    public String userRepair(){
+        return "page/user/repair";
+    }
+
+    @GetMapping("/userComplain")
+    public String userComplain(){
+        return "page/user/complain";
     }
 
     @GetMapping("/payment")

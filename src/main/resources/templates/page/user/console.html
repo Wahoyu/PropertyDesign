@@ -109,6 +109,8 @@
 <body>
 <!-- 正文开始 -->
 <div class="layui-fluid ew-console-wrapper">
+
+    <!-- 常用数据 -->
     <div class="layui-row layui-col-space15">
 
         <!--我的投诉-->
@@ -181,7 +183,9 @@
 
     </div>
     <!-- 快捷方式 -->
+
     <div class="layui-row layui-col-space15">
+        <!--限制左侧部分6,共12-->
         <div class="layui-col-sm6" style="padding-bottom: 0;">
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-xs6 layui-col-sm3">
@@ -211,15 +215,28 @@
                         <div class="console-app-name">改密码</div>
                     </div>
                 </div>
+
+                <div class="layui-col-xs12 layui-col-sm12" style="padding-bottom: 0;">
+                    <!--我的缴费-->
+                    <div class="layui-card">
+                        <div class="layui-card-header">我的缴费</div>
+                        <div class="layui-card-body" style="padding: 17px 15px;">
+                            <table id="myPatment" lay-filter="myPayment"></table>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+
+        <!--右侧部分6,共12-->
+        <!--公告-->
         <div class="layui-col-sm6" style="padding-bottom: 0;">
             <div class="layui-card">
                 <div class="layui-card-body" style="padding: 7px 15px;">
                     <div class="layui-card-body">
-                        <!--公告传参-->
                         <p class="lay-big-font">
-                        <span style="font-size: 24px;line-height: 1;">[[${notice.title}]]</span>
+                            <span style="font-size: 24px;line-height: 1;">[[${notice.title}]]</span>
                         </p>
                         <p>[[${notice.content}]]</p>
                     </div>
@@ -228,6 +245,8 @@
         </div>
     </div>
 
+
+    <!--投诉与维修列表-->
     <div class="layui-row layui-col-space15">
         <div class="layui-col-lg6 layui-col-md6">
             <div class="layui-card">
@@ -237,6 +256,7 @@
                 </div>
             </div>
         </div>
+
         <div class="layui-col-lg6 layui-col-md6">
             <div class="layui-card">
                 <div class="layui-card-header">我的维修</div>
@@ -253,6 +273,8 @@
         <span></span><span></span><span></span><span></span>
     </div>
 </div>
+
+<!--投诉内容弹窗-->
 <script type="text/html" id="modelComplain">
     <form id="modelComplainForm" lay-filter="modelComplainForm" class="layui-form model-form">
         <input name="id" type="hidden"/>
@@ -269,6 +291,8 @@
         </div>
     </form>
 </script>
+
+<!--维修内容弹窗-->
 <script type="text/html" id="modelRepair">
     <form id="modelRepairForm" lay-filter="modelRepairForm" class="layui-form model-form">
         <input name="id" type="hidden"/>
@@ -285,24 +309,35 @@
         </div>
     </form>
 </script>
+
+<!--用户缴费状态设置-->
 <script type="text/html" id="building_3">
     <input type="checkbox" lay-filter="ckStateUser" value="{{d.status}}" lay-skin="switch" disabled
            lay-text="已缴费|未缴费" {{d.status==1?'checked':''}}/>
 </script>
+
+<!--用户名-->
 <script type="text/html" id="templet2">
     {{d.user.username}}
 </script>
+
+<!--账单名字-->
 <script type="text/html" id="templet1">
     {{d.payment.name}}
 </script>
+
+<!--投诉处理按钮-->
 <script type="text/html" id="building_2">
     <input type="checkbox" lay-filter="ckStateUser" value="{{d.status}}" lay-skin="switch" disabled
            lay-text="已处理|未处理" {{d.status==1?'checked':''}}/>
 </script>
+
+<!--维修处理按钮-->
 <script type="text/html" id="building_1">
     <input type="checkbox" lay-filter="ckStateUser" value="{{d.status}}" lay-skin="switch" disabled
            lay-text="已维修|未维修" {{d.status==1?'checked':''}}/>
 </script>
+
 <!-- js部分 -->
 <script type="text/javascript" src="/assets/libs/layui/layui.js"></script>
 <script type="text/javascript" src="/assets/js/common.js?v=316"></script>
@@ -315,6 +350,8 @@
         var form = layui.form;
         var tableX = layui.tableX;
         var table = layui.table;
+
+        //投诉表格数据渲染
         var insTb = table.render({
             elem: '#complain1',
             url: '/api/getAllComplainsByUser',
@@ -333,6 +370,8 @@
                 ]
             ]
         });
+
+        //维修表格数据渲染
         var insTb2 = table.render({
             elem: '#weixiu1',
             url: '/api/getAllRepairsByUser',
@@ -352,7 +391,7 @@
             ]
         });
 
-        // 添加
+        // 添加维修
         $('#newRepair').click(function () {
             admin.open({
                 type: 1,
@@ -387,6 +426,7 @@
             });
         });
 
+        //添加投诉
         $('#newComplain').click(function () {
             admin.open({
                 type: 1,
@@ -421,6 +461,7 @@
             });
         });
 
+        //缴费列表数据渲染
         $('#look').click(function () {
             var $a = $('#look');
             var offset = $a.offset();
