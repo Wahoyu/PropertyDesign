@@ -113,6 +113,10 @@
     <!-- 常用数据 -->
     <div class="layui-row layui-col-space15">
 
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;margin-bottom: 10px">
+            <legend>个人数据:</legend>
+        </fieldset>
+
         <!--我的投诉-->
         <div class="layui-col-xs12 layui-col-sm3 layui-col-md3">
             <div class="layui-card">
@@ -185,6 +189,11 @@
     <!-- 快捷方式 -->
 
     <div class="layui-row layui-col-space15">
+
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;margin-bottom: 10px">
+            <legend>快捷入口:</legend>
+        </fieldset>
+
         <!--限制左侧部分6,共12-->
         <div class="layui-col-sm6" style="padding-bottom: 0;">
             <div class="layui-row layui-col-space15">
@@ -216,53 +225,32 @@
                     </div>
                 </div>
 
-                <div class="layui-col-xs12 layui-col-sm12" style="padding-bottom: 0;">
-                    <!--我的缴费-->
-                    <div class="layui-card">
-                        <div class="layui-card-header">我的缴费</div>
-                        <div class="layui-card-body" style="padding: 17px 15px;">
-                            <table id="myPatment" lay-filter="myPayment"></table>
-                        </div>
-                    </div>
-                </div>
+                <!--<div class="layui-col-xs12 layui-col-sm12" style="padding-bottom: 0;">-->
+                <!--    &lt;!&ndash;我的缴费&ndash;&gt;-->
+                <!--    <div class="layui-card">-->
+                <!--        <div class="layui-card-header">我的缴费</div>-->
+                <!--        <div class="layui-card-body" style="padding: 17px 15px;">-->
+                <!--            <table id="myPayment" lay-filter="myPayment"></table>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
 
-            </div>
-        </div>
-
-        <!--右侧部分6,共12-->
-        <!--公告-->
-        <div class="layui-col-sm6" style="padding-bottom: 0;">
-            <div class="layui-card">
-                <div class="layui-card-body" style="padding: 7px 15px;">
-                    <div class="layui-card-body">
-                        <p class="lay-big-font">
-                            <span style="font-size: 24px;line-height: 1;">[[${notice.title}]]</span>
-                        </p>
-                        <p>[[${notice.content}]]</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
-
-
-    <!--投诉与维修列表-->
+    <!--共12-->
+    <!--公告-->
+    <!-- 正文开始 -->
     <div class="layui-row layui-col-space15">
-        <div class="layui-col-lg6 layui-col-md6">
-            <div class="layui-card">
-                <div class="layui-card-header">我的投诉</div>
-                <div class="layui-card-body" style="padding: 17px 15px;">
-                    <table id="complain1" lay-filter="complain1"></table>
-                </div>
-            </div>
-        </div>
 
-        <div class="layui-col-lg6 layui-col-md6">
-            <div class="layui-card">
-                <div class="layui-card-header">我的维修</div>
-                <div class="layui-card-body" style="padding: 17px 15px;">
-                    <table id="weixiu1" lay-filter="weixiu1"></table>
-                </div>
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;margin-bottom: 10px">
+            <legend>小区公告:</legend>
+        </fieldset>
+
+        <!--公告表格-->
+        <div class="layui-card">
+            <div class="layui-card-body table-tool-mini full-table">
+                <table class="layui-table" id="tableBook" lay-filter="tableBook"></table>
             </div>
         </div>
     </div>
@@ -273,6 +261,17 @@
         <span></span><span></span><span></span><span></span>
     </div>
 </div>
+
+<script type="text/html" id="building_2">
+    <input type="checkbox" lay-filter="ckStateUser" value="{{d.status}}" lay-skin="switch" disabled
+           lay-text="已发布|未发布" {{d.status==0?'checked':''}}/>
+</script>
+<script type="text/html" id="templet_create">
+    {{d.create_admin.username}}
+</script>
+<script type="text/html" id="templet_update">
+    {{d.update_admin==null?d.update_admin.username:'无'}}
+</script>
 
 <!--投诉内容弹窗-->
 <script type="text/html" id="modelComplain">
@@ -338,6 +337,17 @@
            lay-text="已维修|未维修" {{d.status==1?'checked':''}}/>
 </script>
 
+<script type="text/html" id="building_2">
+    <input type="checkbox" lay-filter="ckStateUser" value="{{d.status}}" lay-skin="switch" disabled
+           lay-text="已缴费|未缴费" {{d.status==1?'checked':''}}/>
+</script>
+<script type="text/html" id="templet2">
+    {{d.user.username}}
+</script>
+<script type="text/html" id="templet1">
+    {{d.payment.name}}
+</script>
+
 <!-- js部分 -->
 <script type="text/javascript" src="/assets/libs/layui/layui.js"></script>
 <script type="text/javascript" src="/assets/js/common.js?v=316"></script>
@@ -351,42 +361,23 @@
         var tableX = layui.tableX;
         var table = layui.table;
 
-        //投诉表格数据渲染
+        //缴费单表格数据渲染
         var insTb = table.render({
-            elem: '#complain1',
-            url: '/api/getAllComplainsByUser',
+            elem: '#myPayment',
+            url: '/api/getAllPaymentDetails',
             page: true,
             height: "250",
             cellMinWidth: 100,
             cols: [
                 [
-                    {type: 'numbers', title: 'id'}
-                    ,{field: 'content', sort: true, title: '投诉内容'}
-                    ,{field: 'time', sort: true,templet: function (d) {
+                    {field: 'id', title: 'id'}
+                    ,{field: 'payment', sort: true, templet: '#templet1', title: '缴费名'}
+                    ,{field: 'value', sort: true, title: '缴费值'}
+                    ,{field: 'time', sort: true, templet: function (d) {
                         return util.toDateString(d.time);
-                    }, title: '发布时间'}
-                    ,{field: 'result', sort: true, title: '处理结果'}
-                    ,{field: 'status', sort: true, templet: '#building_2', title: '类型'}
-                ]
-            ]
-        });
-
-        //维修表格数据渲染
-        var insTb2 = table.render({
-            elem: '#weixiu1',
-            url: '/api/getAllRepairsByUser',
-            page: true,
-            height: "250",
-            cellMinWidth: 100,
-            cols: [
-                [
-                    {type: 'numbers', title: 'id'}
-                    ,{field: 'content', sort: true, title: '维修内容'}
-                    ,{field: 'time', sort: true,templet: function (d) {
-                        return util.toDateString(d.time);
-                    }, title: '发布时间'}
-                    ,{field: 'result', sort: true, title: '维修结果'}
-                    ,{field: 'status', sort: true, templet: '#building_2', title: '类型'}
+                    },title: '缴费时间'}
+                    ,{field: 'status', sort: true, templet: '#building_2', title: '状态'}
+                    ,{align: 'center', toolbar: '#tableBarBook', title: '操作', minWidth: 200}
                 ]
             ]
         });
@@ -461,7 +452,44 @@
             });
         });
 
-        //缴费列表数据渲染
+        // 渲染公告表格
+        var insTb = table.render({
+            elem: '#tableBook',
+            url: '/api/showUserAdmin',
+            page: true,
+            height: "full-100",
+            toolbar: true,
+            cellMinWidth: 100,
+            cols: [
+                [
+                    {field: 'id', title: 'id'}
+                    ,{field: 'title', sort: true, title: '公告标题'}
+                    ,{field: 'content', sort: true, title: '公告内容'}
+                    ,{field: 'update', sort: true, templet: function (d) {
+                        if (d.update_admin != null){
+                            return d.update_admin.username;
+                        }else{
+                            return '暂无'
+                        }
+                    }, title: '修改者'}
+                    ,{field: 'update_time', sort: true, templet: function (d) {
+                        if (d.updateTime != null){
+                            return util.toDateString(d.updateTime);
+                        }else{
+                            return '暂无'
+                        }
+                    },title: '修改时间'}
+                    ,{field: 'status', sort: true, templet: '#building_2', title: '类型'}
+                ]
+            ]
+        });
+
+        // 搜索
+        form.on('submit(formSubSearchBook)', function (data) {
+            insTb.reload({where: data.field,url:'/api/findNotice',page : {curr : 1}}, 'data');
+        });
+
+        //缴费列表HTML与数据渲染
         $('#look').click(function () {
             var $a = $('#look');
             var offset = $a.offset();
@@ -498,6 +526,7 @@
                 }
             });
         });
+
     });
 </script>
 </body>

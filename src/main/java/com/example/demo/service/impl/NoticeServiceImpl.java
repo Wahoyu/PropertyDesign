@@ -116,4 +116,12 @@ public class NoticeServiceImpl implements NoticeService {
         List<Notice> noticeList = mapper.selectList(wrapper);
         return noticeList.get(0);
     }
+
+    @Override
+    public List<Notice> showUserAdmin() {
+        QueryWrapper<Notice> wrapper = new QueryWrapper<>();
+        wrapper.eq("status",0);
+        return mapper.selectList(wrapper);
+    }
+
 }

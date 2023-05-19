@@ -28,6 +28,15 @@ public class NoticeController {
         return resBody;
     }
 
+    @GetMapping("/api/showUserAdmin")
+    public ResBody showUserAdmin() {
+        ResBody resBody = new ResBody();
+        List<Notice> list= service.showUserAdmin();
+        resBody.setData(list);
+        resBody.setCode(0);
+        return resBody;
+    }
+
     @PostMapping("/api/addNotice")
     public ResBody addNotice(@RequestBody Notice notice, HttpSession session) {
         ResBody resBody = new ResBody();

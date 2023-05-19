@@ -8,6 +8,8 @@ public interface NoticeService {
 
     public int getCount();
 
+    public List<Notice> showUserAdmin();
+
     public List<Notice> getAllNotices(int page, int limit);
 
     public int addNotice(Notice notice);
