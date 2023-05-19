@@ -27,24 +27,11 @@
         <div class="layui-card-body table-tool-mini full-table">
             <div class="layui-form toolbar">
                 <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label w-auto">状 态：</label>
-                        <div class="layui-input-inline mr0">
-                            <select name="name">
-                                <option value="">请选择维修状态</option>
-                                <option value="0">未维修</option>
-                                <option value="1">已维修</option>
-                            </select>
-                        </div>
-                    </div>
                     <div class="layui-inline" style="padding-right: 110px;">
-                        <button class="layui-btn icon-btn" lay-filter="formSubSearchBook" lay-submit>
-                            <i class="layui-icon">&#xe615;</i>搜索
-                        </button>
+                        <button id="newRepair" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>
                     </div>
                 </div>
             </div>
-
             <table class="layui-table" id="tableBook" lay-filter="tableBook"></table>
         </div>
     </div>
@@ -52,13 +39,14 @@
 
 <!-- 表格操作列 -->
 <script type="text/html" id="tableBarBook">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 
-<!-- 表单弹窗 -->
-<script type="text/html" id="modelBook">
-    <form id="modelBookForm" lay-filter="modelBookForm" class="layui-form model-form">
+
+
+<!--维修内容弹窗-->
+<script type="text/html" id="modelRepair">
+    <form id="modelRepairForm" lay-filter="modelRepairForm" class="layui-form model-form">
         <input name="id" type="hidden"/>
         <div class="layui-form-item">
             <label class="layui-form-label">维修内容</label>
@@ -67,27 +55,14 @@
                        lay-verType="tips" lay-verify="required" required/>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">类型</label>
-            <div class="layui-input-block">
-                <input type="radio" name="status" value="0" title="未维修">
-                <input type="radio" name="status" value="1" title="已维修" checked>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">维修结果</label>
-            <div class="layui-input-block">
-                <input name="result" placeholder="维修结果" type="text" class="layui-input" maxlength="20"
-                       lay-verType="tips" lay-verify="required" required/>
-            </div>
-        </div>
         <div class="layui-form-item text-right">
             <button class="layui-btn layui-btn-primary" type="button" ew-event="closePageDialog">取消</button>
-            <button class="layui-btn" lay-filter="modelSubmitBook" lay-submit>保存</button>
+            <button class="layui-btn" lay-filter="modelSubmitRepair" lay-submit>保存</button>
         </div>
     </form>
 </script>
 
+<!--维修状态-->
 <script type="text/html" id="building_2">
     <input type="checkbox" lay-filter="ckStateUser" value="{{d.status}}" lay-skin="switch" disabled
            lay-text="已维修|未维修" {{d.status==1?'checked':''}}/>
@@ -111,7 +86,7 @@
         // 渲染表格
         var insTb = table.render({
             elem: '#tableBook',
-            url: '/api/getAllRepairs',
+            url: '/api/getAllComplainsByUser',
             page: true,
             height: "full-100",
             toolbar: true,
@@ -120,7 +95,6 @@
                 [
                     {field: 'id', title: 'id'}
                     ,{field: 'content', sort: true, title: '维修内容'}
-                    ,{field: 'create', sort: true,templet: '#templet_create', title: '发布者'}
                     ,{field: 'time', sort: true,templet: function (d) {
                         if (d.time != null){
                             return util.toDateString(d.time);
@@ -138,6 +112,41 @@
         // 添加
         $('#btnAddBook').click(function () {
             showEditModel();
+        });
+
+        // 添加维修
+        $('#newRepair').click(function () {
+            admin.open({
+                type: 1,
+                title: '添加维修',
+                content: $('#modelRepair').html(),
+                success: function (layero, dIndex) {
+                    $(layero).children('.layui-layer-content').css('overflow', 'visible');
+                    var url = '/api/addRepair';
+                    // 表单提交事件
+                    form.on('submit(modelSubmitRepair)', function (data) {
+                        layer.load(2);
+                        $.ajax({
+                            url:url,
+                            type:"POST",
+                            data:JSON.stringify(data.field),
+                            contentType:"application/json; charset=utf-8",
+                            dataType:"json",
+                            success: function(res){
+                                layer.closeAll('loading');
+                                if (res.code == 200) {
+                                    layer.close(dIndex);
+                                    layer.msg(res.msg, {icon: 1});
+                                    insTb2.reload({}, 'data');
+                                } else {
+                                    layer.msg(res.msg, {icon: 2});
+                                }
+                            }
+                        })
+                        return false;
+                    });
+                }
+            });
         });
 
         // 搜索
