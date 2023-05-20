@@ -17,4 +17,6 @@ public interface User_RoomService {
     public int fenpei(Integer user_id, Integer room_id);
 
     public int stopRoomByUserId(int id);
+
+    int getCountByUserId(Integer id);
 }

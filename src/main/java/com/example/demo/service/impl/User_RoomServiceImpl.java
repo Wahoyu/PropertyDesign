@@ -124,4 +124,13 @@ public class User_RoomServiceImpl implements User_RoomService {
         room.setStatus(0);
         return roomMapper.updateById(room);
     }
+
+    //目前拥有的房子的数量
+    @Override
+    public int getCountByUserId(Integer id) {
+        QueryWrapper wrapper = new QueryWrapper();
+        wrapper.eq("user_id", id);
+        wrapper.last("AND outTime is null");
+        return Math.toIntExact(mapper.selectCount(wrapper));
+    }
 }

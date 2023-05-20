@@ -31,6 +31,9 @@ public class IndexController {
     @Autowired
     CarService carService;
 
+    @Autowired
+    User_RoomService userRoomService;
+
     @GetMapping("/admin/login")
     public String login() {
         return "page/admin/adminLogin";
@@ -178,9 +181,13 @@ public class IndexController {
         int repairCount = repairService.getCount();
         int complainCount = complainService.getCount();
         int paymentCount = user_paymentService.getCount();
+        int roomCount = roomService.getCount();
         int userRepair = repairService.getCountByUserId(user.getId());
         int userComplain = complainService.getCountByUserId(user.getId());
         int userPayment = user_paymentService.getCountByUserId(user.getId());
+        int userRoomCount = userRoomService.getCountByUserId(user.getId());
+        model.addAttribute("userRoomCount", userRoomCount);
+        model.addAttribute("roomCount", roomCount);
         model.addAttribute("notice",notice);
         model.addAttribute("userComplain",userComplain);
         model.addAttribute("userRepair",userRepair);
