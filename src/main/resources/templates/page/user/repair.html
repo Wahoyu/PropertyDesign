@@ -88,7 +88,7 @@
         // 渲染表格
         var insTb = table.render({
             elem: '#tableBook',
-            url: '/api/getAllComplainsByUser',
+            url: '/api/getAllRepairsByUser',
             page: true,
             height: "full-100",
             toolbar: true,
@@ -139,7 +139,7 @@
                                 if (res.code == 200) {
                                     layer.close(dIndex);
                                     layer.msg(res.msg, {icon: 1});
-                                    insTb2.reload({}, 'data');
+                                    insTb.reload({}, 'data');
                                 } else {
                                     layer.msg(res.msg, {icon: 2});
                                 }
