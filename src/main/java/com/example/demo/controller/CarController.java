@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.eneity.Car;
 import com.example.demo.eneity.ResBody;
+import com.example.demo.eneity.Room;
 import com.example.demo.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -81,10 +82,23 @@ public class CarController {
     }
 
     @GetMapping("/ajax/getAllFreeCars")
-    public ResBody getAllUnits(@RequestParam int type) {
+    public ResBody getAllFreeCarsByType(@RequestParam int type) {
         ResBody resBody = new ResBody();
         List<Car> list= service.getAllFreeCars(type);
         resBody.setData(list);
+        resBody.setCode(0);
+        return resBody;
+    }
+
+    //返回所有的freeCar
+    @GetMapping("/api/getAllFreeCars")
+    public ResBody getAllFreeCars(@RequestParam int page,
+                                   @RequestParam int limit) {
+        ResBody resBody = new ResBody();
+        int count = service.getFreeCount();
+        List<Car> list = service.getFreeCars(page, limit);
+        resBody.setData(list);
+        resBody.setCount(count);
         resBody.setCode(0);
         return resBody;
     }

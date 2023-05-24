@@ -3,6 +3,8 @@ package com.example.demo.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.eneity.Car;
+import com.example.demo.eneity.Room;
+import com.example.demo.eneity.Unit;
 import com.example.demo.mapper.CarMapper;
 import com.example.demo.service.CarService;
 import org.springframework.stereotype.Service;
@@ -85,5 +87,18 @@ public class CarServiceImpl implements CarService {
         int i = Math.toIntExact(mapper.selectCount(wrapper));
 
         return i;
+    }
+
+    //查询所有的空闲车位
+    public List<Car> getFreeCars(int page, int limit) {
+        //分页查询
+        Page<Car> p = new Page<>(page, limit);
+        //
+        QueryWrapper<Car> wrapper1 = new QueryWrapper<>();
+        wrapper1.eq("status", 0);
+
+        List<Car> list = mapper.selectPage(p,wrapper1).getRecords();
+
+        return list;
     }
 }

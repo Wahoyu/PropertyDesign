@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.eneity.Car;
+import com.example.demo.eneity.Room;
 
 import java.util.List;
 
@@ -22,4 +23,5 @@ public interface CarService {
     public List<Car> getAllFreeCars(int type);
 
     public int getFreeCount();
+    public List<Car> getFreeCars(int page, int limit);
 }

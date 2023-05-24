@@ -107,7 +107,7 @@ public class RoomServiceImpl implements RoomService {
         wrapper.eq("status", 0);
         return Math.toIntExact(mapper.selectCount(wrapper));
     }
-    //查询所有的空闲房屋的数量
+    //查询所有的空闲房屋
     public List<Room> getFreeRooms(int page, int limit) {
         //分页查询
         Page<Room> p = new Page<>(page, limit);
