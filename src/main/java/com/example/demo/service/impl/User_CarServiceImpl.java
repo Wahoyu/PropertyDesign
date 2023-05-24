@@ -133,4 +133,14 @@ public class User_CarServiceImpl implements User_CarService {
         car.setStatus(0);
         return carMapper.updateById(car);
     }
+
+    //目前拥有的用户的数量
+    @Override
+    public int getCountByUserId(Integer id) {
+        QueryWrapper wrapper = new QueryWrapper();
+        wrapper.eq("user_id", id);
+        wrapper.last("AND outTime is null");
+        return Math.toIntExact(mapper.selectCount(wrapper));
+
+    }
 }

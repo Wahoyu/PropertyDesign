@@ -16,4 +16,6 @@ public interface User_CarService {
     public int addUserCar(Integer user_id, Integer car_id);
 
     public int stopCarByUserId(int id);
+
+    public int getCountByUserId(Integer id);
 }
