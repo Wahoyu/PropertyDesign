@@ -23,4 +23,6 @@ public interface RoomService {
     public List<Room> getAllFreeRooms(int unit_id);
 
     public int getFreeCount();
+
+    public List<Room> getFreeRooms(int page, int limit);
 }

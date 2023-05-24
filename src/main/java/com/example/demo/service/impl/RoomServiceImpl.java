@@ -107,4 +107,30 @@ public class RoomServiceImpl implements RoomService {
         wrapper.eq("status", 0);
         return Math.toIntExact(mapper.selectCount(wrapper));
     }
+    //查询所有的空闲房屋的数量
+    public List<Room> getFreeRooms(int page, int limit) {
+        //分页查询
+        Page<Room> p = new Page<>(page, limit);
+
+        //
+        QueryWrapper<Room> wrapper1 = new QueryWrapper<>();
+        wrapper1.eq("status", 0);
+
+        List<Room> list = mapper.selectPage(p,wrapper1).getRecords();
+
+        //System.out.println(list);
+
+        //如果list不为空,添加user
+        if (list!=null){
+            for (Room room:list){
+                QueryWrapper<Unit> wrapper = new QueryWrapper<>();
+                wrapper.eq("id", room.getUnit_id());
+                Unit unit = unitMapper.selectOne(wrapper);
+                room.setUnit(unit);
+            }
+            return list;
+        }else{
+            return null;
+        }
+    }
 }

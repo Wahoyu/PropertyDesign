@@ -16,10 +16,10 @@ public class RoomController {
 
     @GetMapping("/api/getAllRooms")
     public ResBody getAllRooms(@RequestParam int page,
-                                  @RequestParam int limit) {
+                               @RequestParam int limit) {
         ResBody resBody = new ResBody();
         int count = service.getCount();
-        List<Room> list= service.getAllRooms(page, limit);
+        List<Room> list = service.getAllRooms(page, limit);
         resBody.setCount(count);
         resBody.setData(list);
         resBody.setCode(0);
@@ -30,10 +30,10 @@ public class RoomController {
     public ResBody addRoom(@RequestBody Room room) {
         ResBody resBody = new ResBody();
         int i = service.addRoom(room);
-        if (i == 1){
+        if (i == 1) {
             resBody.setCode(200);
             resBody.setMsg("添加成功");
-        }else{
+        } else {
             resBody.setCode(500);
             resBody.setMsg("添加失败");
         }
@@ -44,10 +44,10 @@ public class RoomController {
     public ResBody updateUnit(@RequestBody Room room) {
         ResBody resBody = new ResBody();
         int i = service.updateRoom(room);
-        if (i == 1){
+        if (i == 1) {
             resBody.setCode(200);
             resBody.setMsg("修改成功");
-        }else{
+        } else {
             resBody.setCode(500);
             resBody.setMsg("修改失败");
         }
@@ -58,10 +58,10 @@ public class RoomController {
     public ResBody delRoom(@RequestParam int id) {
         ResBody resBody = new ResBody();
         int i = service.delRoom(id);
-        if (i == 1){
+        if (i == 1) {
             resBody.setCode(200);
             resBody.setMsg("删除成功");
-        }else{
+        } else {
             resBody.setCode(500);
             resBody.setMsg("删除失败");
         }
@@ -73,14 +73,14 @@ public class RoomController {
                                 @RequestParam int limit,
                                 @RequestParam String name) {
         int count = 0;
-        List<Room> list= new ArrayList<>();
+        List<Room> list = new ArrayList<>();
         ResBody resBody = new ResBody();
-        if (name.isEmpty()){
+        if (name.isEmpty()) {
             count = service.getCount();
-            list= service.getAllRooms(page, limit);
-        }else {
+            list = service.getAllRooms(page, limit);
+        } else {
             count = service.getCount(name);
-            list= service.findRoom(page, limit,name);
+            list = service.findRoom(page, limit, name);
         }
         resBody.setCount(count);
         resBody.setData(list);
@@ -88,11 +88,25 @@ public class RoomController {
         return resBody;
     }
 
+    //返回一个单元中的freeRoom
     @GetMapping("/ajax/getAllFreeRooms")
-    public ResBody getAllFreeRooms(@RequestParam int unit_id) {
+    public ResBody getUnitFreeRooms(@RequestParam int unit_id) {
         ResBody resBody = new ResBody();
         List<Room> list = service.getAllFreeRooms(unit_id);
         resBody.setData(list);
+        resBody.setCode(0);
+        return resBody;
+    }
+
+    //返回所有的freeRoom
+    @GetMapping("/api/getAllFreeRooms")
+    public ResBody getAllFreeRooms(@RequestParam int page,
+                                   @RequestParam int limit) {
+        ResBody resBody = new ResBody();
+        int count = service.getFreeCount();
+        List<Room> list = service.getFreeRooms(page, limit);
+        resBody.setData(list);
+        resBody.setCount(count);
         resBody.setCode(0);
         return resBody;
     }
