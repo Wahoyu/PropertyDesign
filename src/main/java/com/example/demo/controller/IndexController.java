@@ -148,6 +148,14 @@ public class IndexController {
     public String userComplain(){
         return "page/user/complain";
     }
+    @GetMapping("/userFreeRoom")
+    public String userFreeRoom(){
+        return "page/user/room";
+    }
+    @GetMapping("/userFreeCar")
+    public String userFreeCar(){
+        return "page/user/car";
+    }
 
     @GetMapping("/payment")
     public String payment(){
