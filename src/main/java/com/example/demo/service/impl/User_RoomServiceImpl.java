@@ -2,14 +2,19 @@ package com.example.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.demo.eneity.*;
-import com.example.demo.mapper.*;
+import com.example.demo.eneity.Room;
+import com.example.demo.eneity.User;
+import com.example.demo.eneity.User_Room;
+import com.example.demo.mapper.RoomMapper;
+import com.example.demo.mapper.UserMapper;
+import com.example.demo.mapper.User_RoomMapper;
 import com.example.demo.service.User_RoomService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+
 @Service
 public class User_RoomServiceImpl implements User_RoomService {
     @Resource
@@ -30,13 +35,14 @@ public class User_RoomServiceImpl implements User_RoomService {
     public List<User_Room> findRoomRecordById(int id, int page, int limit) {
         //根据room_id分页查询
         Page<User_Room> page1 = new Page<>(page, limit);
+
         QueryWrapper<User_Room> user_roomWrapper = new QueryWrapper<>();
         user_roomWrapper.eq("room_id", id);
         List<User_Room> user_roomList = mapper.selectList(user_roomWrapper);
 
         //注入user和room
-        if (user_roomList!=null){
-            for (User_Room user_room:user_roomList){
+        if (user_roomList != null) {
+            for (User_Room user_room : user_roomList) {
 
                 //通过user_id查询user并进行注入
                 User user = userMapper.selectById(user_room.getUser_id());
@@ -47,7 +53,7 @@ public class User_RoomServiceImpl implements User_RoomService {
 
             }
             return user_roomList;
-        }else{
+        } else {
             return null;
         }
     }
@@ -103,6 +109,7 @@ public class User_RoomServiceImpl implements User_RoomService {
         return roomMapper.updateById(room);
     }
 
+
     public int stopRoomByUserId(int id) {
         /*
         1. 取消user_id对应的绑定关系
@@ -132,5 +139,6 @@ public class User_RoomServiceImpl implements User_RoomService {
         wrapper.eq("user_id", id);
         wrapper.last("AND outTime is null");
         return Math.toIntExact(mapper.selectCount(wrapper));
+
     }
 }
