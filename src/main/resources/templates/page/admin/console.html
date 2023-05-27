@@ -149,7 +149,8 @@
                 </div>
                 <!--面板主体-->
                 <div class="layui-card-body">
-                    <p class="lay-big-font">[[${noticeCount}]] <span style="font-size: 24px;line-height: 1;">条</span></p>
+                    <p class="lay-big-font">[[${noticeCount}]] <span style="font-size: 24px;line-height: 1;">条</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -166,7 +167,8 @@
                 </div>
                 <!--面板主体-->
                 <div class="layui-card-body">
-                    <p class="lay-big-font">[[${complainCount}]] <span style="font-size: 24px;line-height: 1;">条</span></p>
+                    <p class="lay-big-font">[[${complainCount}]] <span style="font-size: 24px;line-height: 1;">条</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -183,84 +185,43 @@
                 </div>
                 <!--面板主体-->
                 <div class="layui-card-body">
-                    <p class="lay-big-font">[[${repairCount}]] <span style="font-size: 24px;line-height: 1;">条</span></p>
+                    <p class="lay-big-font">[[${repairCount}]] <span style="font-size: 24px;line-height: 1;">条</span>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- 统计图表 -->
-    <div class="layui-row layui-col-space15">
+<!--分隔符-->
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;margin-bottom: 0px">
+    <legend>房屋出售统计:</legend>
+</fieldset>
 
-        <!--房屋统计-->
-        <div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
-            <div class="layui-card">
-                <div class="layui-card-header">房屋统计</div>
-                <div class="layui-card-body">
-                    <!--方块大小-->
-                    <div style="height: 200px;position: relative;">
-                        <div id="tjDivDay" style="height: 100%;"></div>
-                    </div>
-                    <div class="layui-row text-center">
-                        <div class="layui-col-xs6">
-                            <div id="tv1Num1" style="color: #28a6d6;font-size: 22px;">[[${roomFreeCount}]]</div>
-                            <div style="font-size: 18px;padding: 10px 0 15px 0;">闲置</div>
-                        </div>
-                        <div class="layui-col-xs6">
-                            <div id="tv1Num2" style="color: #28a6d6;font-size: 22px;">[[${roomCount}]]</div>
-                            <div style="font-size: 18px;padding: 10px 0 15px 0;">总数</div>
-                        </div>
-                    </div>
-                </div>
+<!--房屋折线图-->
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space12">
+        <div class="layui-card">
+            <div style="height: 300px;position: relative;">
+                <div id="countUserRoomByMonth" style="height: 100%;"></div>
             </div>
         </div>
+    </div>
+</div>
 
-        <!--车位统计-->
-        <div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
-            <div class="layui-card">
-                <div class="layui-card-header">车位统计</div>
-                <div class="layui-card-body">
-                    <!--方块大小-->
-                    <div style="height: 200px;position: relative;">
-                    <div id="tjDivWeek" style="height: 100%;"></div>
-                    </div>
-                </div>
-                <div class="layui-row text-center">
-                    <div class="layui-col-xs6">
-                        <div id="tv1Num3" style="color: #28a6d6;font-size: 22px;">[[${carFreeCount}]]</div>
-                        <div style="font-size: 18px;padding: 10px 0 15px 0;">闲置</div>
-                    </div>
-                    <div class="layui-col-xs6">
-                        <div id="tv1Num4" style="color: #28a6d6;font-size: 22px;">[[${carCount}]]</div>
-                        <div style="font-size: 18px;padding: 10px 0 15px 0;">总数</div>
-                    </div>
-                </div>
+<!--分隔符-->
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;margin-bottom: 0px">
+    <legend>车位租赁统计:</legend>
+</fieldset>
+
+<!--车位折线图-->
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space12">
+        <div class="layui-card">
+            <div style="height: 300px;position: relative;">
+                <div id="countUserCarByMonth" style="height: 100%;"></div>
             </div>
         </div>
-
-        <!--缴费统计-->
-        <div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
-            <div class="layui-card">
-                <div class="layui-card-header">缴费统计</div>
-                <div class="layui-card-body">
-                    <!--方块大小-->
-                    <div style="height: 200px;position: relative;">
-                    <div id="tjDivMonth" style="height: 100%;"></div>
-                    </div>
-                </div>
-                <div class="layui-row text-center">
-                    <div class="layui-col-xs6">
-                        <div id="tv1Num5" style="color: #28a6d6;font-size: 22px;">[[${paymentFreeCount}]]</div>
-                        <div style="font-size: 18px;padding: 10px 0 15px 0;">未缴</div>
-                    </div>
-                    <div class="layui-col-xs6">
-                        <div id="tv1Num6" style="color: #28a6d6;font-size: 22px;">[[${paymentCount}]]</div>
-                        <div style="font-size: 18px;padding: 10px 0 15px 0;">已缴</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 
@@ -282,168 +243,107 @@
         var layer = layui.layer;
         var table = layui.table;
         var admin = layui.admin;
-        var myCharts1 = echarts.init(document.getElementById('tjDivDay'), myEchartsTheme);
-        var options1 = {
-            title: {
-                show: true,
-                x: 'center',
-                y: '33%',
-                text: '剩余数/总数',
-                textStyle: {
-                    fontSize: 20,
-                    color: '#333'
-                },
-                subtextStyle: {
-                    fontSize: 50,
-                    lineHeight: 100,
-                    color: '#28a6d6'
-                }
-            },
-            color: ['#18B4E7', '#ddd'],
-            tooltip: {
-                trigger: 'item'
-            },
-            series: [
-                {
-                    name: '数量',
-                    type: 'pie',
-                    radius: ['75%', '80%'],
-                    label: {
-                        normal: {
-                            show: false
-                        }
-                    }
-                }
-            ]
-        };
-        myCharts1.setOption(options1);
-        myCharts1.setOption({
-            title: {
-                subtext: [[${roomFreeCount}]] + "/" + [[${roomCount}]],
-                subtextStyle: {
-                    fontSize: 25
-                },
-            },
-            series: [
-                {
-                    data: [
-                        {name: "剩余", value: [[${roomFreeCount}]]},
-                        {name: "租出", value: [[${roomCount - roomFreeCount}]]}
-                    ]
-                }
-            ]
-        });
-        //-------------------------------------
-        var myCharts2 = echarts.init(document.getElementById('tjDivWeek'), myEchartsTheme);
-        var options2 = {
-            title: {
-                show: true,
-                x: 'center',
-                y: '33%',
-                text: '剩余数/总数',
-                textStyle: {
-                    fontSize: 20,
-                    color: '#333'
-                },
-                subtextStyle: {
-                    fontSize: 50,
-                    lineHeight: 100,
-                    color: '#28a6d6'
-                }
-            },
-            color: ['#18B4E7', '#ddd'],
-            tooltip: {
-                trigger: 'item'
-            },
-            series: [
-                {
-                    name: '数量',
-                    type: 'pie',
-                    radius: ['75%', '80%'],
-                    label: {
-                        normal: {
-                            show: false
-                        }
-                    }
-                }
-            ]
-        };
-        myCharts2.setOption(options2);
-        myCharts2.setOption({
-            title: {
-                subtext: [[${carFreeCount}]] + "/" + [[${carCount}]],
-                subtextStyle: {
-                    fontSize: 25
-                },
-            },
-            series: [
-                {
-                    data: [
-                        {name: "剩余", value: [[${carFreeCount}]]},
-                        {name: "租出", value: [[${carCount - carFreeCount}]]}
-                    ]
-                }
-            ]
-        });
-        //-------------------------------------
-        var myCharts3 = echarts.init(document.getElementById('tjDivMonth'), myEchartsTheme);
-        var options3 = {
-            title: {
-                show: true,
-                x: 'center',
-                y: '33%',
-                text: '剩余数/总数',
-                textStyle: {
-                    fontSize: 20,
-                    color: '#333'
-                },
-                subtextStyle: {
-                    fontSize: 50,
-                    lineHeight: 100,
-                    color: '#28a6d6'
-                }
-            },
-            color: ['#18B4E7', '#ddd'],
-            tooltip: {
-                trigger: 'item'
-            },
-            series: [
-                {
-                    name: '数量',
-                    type: 'pie',
-                    radius: ['75%', '80%'],
-                    label: {
-                        normal: {
-                            show: false
-                        }
-                    }
-                }
-            ]
-        };
-        myCharts3.setOption(options3);
-        myCharts3.setOption({
-            title: {
-                subtext: [[${paymentFreeCount}]] + "/" + [[${paymentCount}]],
-                subtextStyle: {
-                    fontSize: 25
-                },
-            },
-            series: [
-                {
-                    data: [
-                        {name: "剩余", value: [[${paymentFreeCount}]]},
-                        {name: "已缴", value: [[${paymentCount - paymentFreeCount}]]}
-                    ]
-                }
-            ]
-        });
-        // 窗口大小改变事件
-        window.onresize = function () {
-            myCharts1.resize();
-            myCharts2.resize();
-            myCharts3.resize();
-        };
 
+
+        // 使用 echarts 绘制折线图
+        var myChart = echarts.init(document.getElementById('countUserRoomByMonth'));
+        var myChart1 = echarts.init(document.getElementById('countUserCarByMonth'));
+
+        $.ajax({
+            url: "/api/countUserRoomByMonth",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+
+                JSON.stringify(data, Object.keys(data));
+
+                console.log(data);
+
+                var monthData = [];
+                var countData = [];
+
+                // 将数据转换为数组
+                for (var key in data) {
+                    monthData.push(key);
+                    countData.push(data[key]);
+                }
+
+                var option = {
+
+                    legend: {
+                        data: ['房屋出售数量']
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                    series: [{
+                        name: '房屋出售数量',
+                        data: countData,
+                        type: 'line',
+                        }],
+                    color: '#5A6FC0'
+                };
+
+                myChart.setOption(option);
+            }
+        });
+
+        $.ajax({
+            url: "/api/countUserCarByMonth",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+
+                JSON.stringify(data, Object.keys(data));
+
+                console.log(data);
+
+                var monthData = [];
+                var countData = [];
+
+                // 将数据转换为数组
+                for (var key in data) {
+                    monthData.push(key);
+                    countData.push(data[key]);
+                }
+
+                var option1 = {
+
+                    legend: {
+                        data: ['车位出租数量']
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                    series: [{
+                        name: '车位出租数量',
+                        type: 'line',
+                        data: countData,
+                        }],
+                    color: '#71c935'
+                };
+
+                myChart1.setOption(option1);
+            }
+        });
     });
 </script>
 </body>

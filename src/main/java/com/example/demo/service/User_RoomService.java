@@ -1,8 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.eneity.User_Room;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public interface User_RoomService {
 
@@ -19,4 +21,7 @@ public interface User_RoomService {
     public int stopRoomByUserId(int id);
 
     int getCountByUserId(Integer id);
+
+    TreeMap<String, Integer> countUserRoomByMonth();
+
 }

@@ -9,11 +9,13 @@ import com.example.demo.mapper.RoomMapper;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.mapper.User_RoomMapper;
 import com.example.demo.service.User_RoomService;
+import com.example.demo.util.MonthMap;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class User_RoomServiceImpl implements User_RoomService {
@@ -140,5 +142,27 @@ public class User_RoomServiceImpl implements User_RoomService {
         wrapper.last("AND outTime is null");
         return Math.toIntExact(mapper.selectCount(wrapper));
 
+    }
+
+    //用户租房信息统计折线图
+    public TreeMap<String, Integer> countUserRoomByMonth() {
+
+        // 搜索所有的User_Room
+        List<User_Room> list = mapper.selectList(null);
+
+        //
+        TreeMap<String, Integer> map = new MonthMap().createMonthMap();
+
+        for (User_Room ur : list) {
+
+            // 在this获取到月份
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(ur.getInTime());
+            String month = new SimpleDateFormat("MM").format(cal.getTime());
+
+            // 向map添加元素
+            map.put("x_"+month, map.get("x_"+month) + 1);
+        }
+        return map;
     }
 }

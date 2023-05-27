@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.TreeMap;
 
 @RestController
 public class User_CarController {
@@ -57,6 +58,11 @@ public class User_CarController {
             resBody.setMsg("添加失败");
         }
         return resBody;
+    }
+
+    @GetMapping("/api/countUserCarByMonth")
+    public TreeMap<String, Integer> countUserCarByMonth(){
+        return service.countUserCarByMonth();
     }
 
 }

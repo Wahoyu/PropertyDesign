@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.eneity.User_Car;
 
 import java.util.List;
+import java.util.TreeMap;
 
 public interface User_CarService {
     public int getCarRecordCount(int id);
@@ -18,4 +19,6 @@ public interface User_CarService {
     public int stopCarByUserId(int id);
 
     public int getCountByUserId(Integer id);
+
+    TreeMap<String, Integer> countUserCarByMonth();
 }

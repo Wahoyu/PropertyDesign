@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 @RestController
 public class User_RoomController {
@@ -57,5 +59,10 @@ public class User_RoomController {
             resBody.setMsg("添加失败");
         }
         return resBody;
+    }
+
+    @GetMapping("/api/countUserRoomByMonth")
+    public TreeMap<String, Integer> countUserRoomByMonth(){
+        return service.countUserRoomByMonth();
     }
 }
