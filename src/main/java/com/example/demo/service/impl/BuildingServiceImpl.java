@@ -76,11 +76,12 @@ public class BuildingServiceImpl implements BuildingService {
 
         List<Building> buildings = mapper.selectPage(p,wrapper).getRecords();
 
-        if (buildings!=null){
-            return buildings;
-        }else{
+        if (buildings == null || buildings.size() == 0) {
+            //list为空
             return null;
         }
+
+        return buildings;
     }
 
     //查询所有的建筑
