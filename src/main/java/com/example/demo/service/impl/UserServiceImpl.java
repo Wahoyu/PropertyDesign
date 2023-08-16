@@ -63,14 +63,12 @@ public class UserServiceImpl implements UserService {
                 wrapper1.eq("user_id", user.getId());
                 wrapper1.last("AND outTime is null");
                 User_Car user_car = user_carMapper.selectOne(wrapper1);
-                System.out.println("######################"+user_car);
 
                 if(user_car != null) {
                     //2
                     QueryWrapper<Car> wrapper2 = new QueryWrapper<>();
                     wrapper2.eq("id", user_car.getCar_id());
                     Car car = carMapper.selectOne(wrapper2);
-                    System.out.println("######################car:" + car);
 
                     //3
                     user.setCar(car);
@@ -88,14 +86,12 @@ public class UserServiceImpl implements UserService {
                 wrapper3.eq("user_id", user.getId());
                 wrapper3.last("AND outTime is null");
                 User_Room user_room = user_roomMapper.selectOne(wrapper3);
-                System.out.println("######################user_room:"+user_room);
 
                 if(user_room != null) {
                     //2
                     QueryWrapper<Room> wrapper4 = new QueryWrapper<>();
                     wrapper4.eq("id", user_room.getRoom_id());
                     Room room = roomMapper.selectOne(wrapper4);
-                    System.out.println("######################room:" + room);
 
                     //3
                     QueryWrapper<Unit> unitWrapper = new QueryWrapper<>();
@@ -107,7 +103,6 @@ public class UserServiceImpl implements UserService {
                     user.setRoom(room);
                 }
             }
-            System.out.println(userList);
             return userList;
         }else{
             return null;
@@ -135,14 +130,12 @@ public class UserServiceImpl implements UserService {
                 wrapper1.eq("user_id", user.getId());
                 wrapper1.last("AND outTime is null");
                 User_Car user_car = user_carMapper.selectOne(wrapper1);
-                System.out.println("######################"+user_car);
 
                 if(user_car != null) {
                     //2
                     QueryWrapper<Car> wrapper2 = new QueryWrapper<>();
                     wrapper2.eq("id", user_car.getCar_id());
                     Car car = carMapper.selectOne(wrapper2);
-                    System.out.println("######################car:" + car);
 
                     //3
                     user.setCar(car);
@@ -160,14 +153,12 @@ public class UserServiceImpl implements UserService {
                 wrapper3.eq("user_id", user.getId());
                 wrapper3.last("AND outTime is null");
                 User_Room user_room = user_roomMapper.selectOne(wrapper3);
-                System.out.println("######################user_room:"+user_room);
 
                 if(user_room != null) {
                     //2
                     QueryWrapper<Room> wrapper4 = new QueryWrapper<>();
                     wrapper4.eq("id", user_room.getRoom_id());
                     Room room = roomMapper.selectOne(wrapper4);
-                    System.out.println("######################room:" + room);
 
                     //3
                     QueryWrapper<Unit> unitWrapper = new QueryWrapper<>();
@@ -179,7 +170,6 @@ public class UserServiceImpl implements UserService {
                     user.setRoom(room);
                 }
             }
-            System.out.println(userList);
             return userList;
         }else{
             return null;

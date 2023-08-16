@@ -22,7 +22,7 @@ spring:
     prefix: classpath:/templates/
 
   datasource:
-    url: jdbc:mysql://localhost:3306/wuye?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/wuye?serverTimezone=UTC&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver

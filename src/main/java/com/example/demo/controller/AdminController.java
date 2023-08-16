@@ -10,16 +10,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @RestController
 public class AdminController {
-    @Autowired
+    @Resource
     AdminService service;
     private static final Logger LOG = LoggerFactory.getLogger(AdminController.class);
 
     //登录验证
+    /**
+     *
+     * @param params
+     * @param session
+     * @return
+     */
     @PostMapping("/admin/loginByPassword")
     public ResBody loginByPassword(@RequestBody Map<String, Object> params, HttpSession session) {
         ResBody resBody = new ResBody();

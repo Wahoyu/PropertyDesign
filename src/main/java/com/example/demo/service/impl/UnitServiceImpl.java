@@ -33,7 +33,6 @@ public class UnitServiceImpl implements UnitService {
         QueryWrapper<Unit> wrapper1 = new QueryWrapper<>();
         wrapper1.orderByAsc("name");
         List<Unit> list = mapper.selectPage(p,wrapper1).getRecords();
-        System.out.println(list);
 
         //如果list不为空,添加user
         if (list!=null){
@@ -75,7 +74,6 @@ public class UnitServiceImpl implements UnitService {
         wrapper2.orderByAsc("name");
 
         List<Unit> list = mapper.selectPage(p,wrapper2).getRecords();
-        System.out.println(list);
 
         //如果list不为空,添加user
         if (list!=null){

@@ -25,6 +25,7 @@ public class AdminServiceImpl implements AdminService {
 
         List<Admin> list = mapper.selectList(wrapper);
 
+        //
         if (list!=null && list.size()>0){
             return list.get(0);
         }else{

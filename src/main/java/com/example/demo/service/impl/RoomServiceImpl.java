@@ -29,7 +29,6 @@ public class RoomServiceImpl implements RoomService {
         //分页查询
         Page<Room> p = new Page<>(page, limit);
         List<Room> list = mapper.selectPage(p,null).getRecords();
-        System.out.println(list);
 
         //如果list不为空,添加user
         if (list!=null){
@@ -70,7 +69,6 @@ public class RoomServiceImpl implements RoomService {
         wrapper2.like("name", name);
 
         List<Room> list = mapper.selectPage(p,wrapper2).getRecords();
-        System.out.println(list);
 
         //如果list不为空,添加user
         if (list!=null){
@@ -117,8 +115,6 @@ public class RoomServiceImpl implements RoomService {
         wrapper1.eq("status", 0);
 
         List<Room> list = mapper.selectPage(p,wrapper1).getRecords();
-
-        //System.out.println(list);
 
         //如果list不为空,添加user
         if (list!=null){

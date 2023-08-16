@@ -31,7 +31,6 @@ public class RepairServiceImpl implements RepairService {
         //分页查询
         Page<Repair> p = new Page<>(page, limit);
         List<Repair> list = mapper.selectPage(p,null).getRecords();
-        System.out.println(list);
 
         //如果list不为空,添加user
         if (list!=null){
@@ -79,7 +78,6 @@ public class RepairServiceImpl implements RepairService {
         QueryWrapper wrapper2 = new QueryWrapper<>();
         wrapper2.eq("status",name);
         List<Repair> list = mapper.selectPage(p,wrapper2).getRecords();
-        System.out.println(list);
         //如果list不为空,添加user
         if (list!=null){
             for (Repair repair:list){
@@ -111,7 +109,6 @@ public class RepairServiceImpl implements RepairService {
         wrapper2.eq("user_id", id);
 
         List<Repair> list = mapper.selectPage(p,wrapper2).getRecords();
-        System.out.println(list);
         //如果list不为空,添加user
         if (list!=null){
             for (Repair repair:list){

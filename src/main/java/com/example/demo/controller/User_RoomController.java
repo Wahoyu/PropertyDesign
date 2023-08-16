@@ -43,7 +43,6 @@ public class User_RoomController {
     @PostMapping("/api/fenpeiRoom")
     public ResBody fenpeiRoom(@RequestBody User_Room user_room) {
         ResBody resBody = new ResBody();
-        System.out.println(user_room);
         user_room.setUser_id(user_room.getId());
         //判断该用户当前有无房间，如果有，先退房再入住。
         int count = service.findRoom(user_room.getUser_id());

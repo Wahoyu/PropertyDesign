@@ -30,7 +30,6 @@ public class NoticeServiceImpl implements NoticeService {
         //分页查询
         Page<Notice> p = new Page<>(page, limit);
         List<Notice> list = mapper.selectPage(p,null).getRecords();
-        System.out.println(list);
         //如果list不为空,添加user
         if (list!=null){
             for (Notice notice:list){
@@ -87,7 +86,6 @@ public class NoticeServiceImpl implements NoticeService {
         wrapper3.like("title", name);
 
         List<Notice> list = mapper.selectPage(p,wrapper3).getRecords();
-        System.out.println(list);
         //如果list不为空,添加user
         if (list!=null){
             for (Notice notice:list){
@@ -108,8 +106,7 @@ public class NoticeServiceImpl implements NoticeService {
         }
     }
 
-    //查询status为0的公告list的头一个
-    //用户查看公告
+    //用户查看查询status为0的公告list的头一个
     public Notice getNotice() {
         QueryWrapper<Notice> wrapper = new QueryWrapper<>();
         wrapper.eq("status",0);
@@ -117,11 +114,30 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeList.get(0);
     }
 
+    //用户查看可显示的公告列表
     @Override
     public List<Notice> showUserAdmin() {
         QueryWrapper<Notice> wrapper = new QueryWrapper<>();
         wrapper.eq("status",0);
-        return mapper.selectList(wrapper);
+        List<Notice> list = mapper.selectList(wrapper);
+        //如果list不为空,添加user
+        if (list!=null){
+            for (Notice notice:list){
+                QueryWrapper<Admin> wrapper1 = new QueryWrapper<>();
+                wrapper1.eq("id", notice.getCreateBy());
+                Admin admin = adminMapper.selectOne(wrapper1);
+                notice.setCreate_admin(admin);
+            }
+            for (Notice notice:list){
+                QueryWrapper<Admin> wrapper2 = new QueryWrapper<>();
+                wrapper2.eq("id", notice.getUpdateBy());
+                Admin admin = adminMapper.selectOne(wrapper2);
+                notice.setUpdate_admin(admin);
+            }
+            return list;
+        }else{
+            return null;
+        }
     }
 
 }

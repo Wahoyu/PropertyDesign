@@ -31,18 +31,6 @@ class DemoApplicationTests {
 
     @Test
     void contextLoads() {
-        Page<Complain> page = new Page<>(1,10);
-        List<Complain> complainList = mapper.selectPage(page,null).getRecords();
-        System.out.println(complainList);
-    }
-    @Test
-    void findCarRecordById() {
-        System.out.println(user_carService.findCar(2));
-    }
-
-    @Test
-    void test2() {
-        System.out.println(user_roomController.countUserRoomByMonth());
     }
 
 

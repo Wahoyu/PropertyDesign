@@ -42,7 +42,6 @@ public class User_CarController {
     @PostMapping("/api/addUserCar")
     public ResBody addUserCar(@RequestBody User_Car user_car) {
         ResBody resBody = new ResBody();
-        System.out.println(user_car);
         user_car.setUser_id(user_car.getId());
         //判断该用户当前有无车位，如果有，先将前面的绑定关系取消。
         int count = service.findCar(user_car.getUser_id());

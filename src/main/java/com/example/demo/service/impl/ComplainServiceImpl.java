@@ -33,7 +33,6 @@ public class ComplainServiceImpl implements ComplainService {
         //分页查询
         Page<Complain> p = new Page<>(page, limit);
         List<Complain> list = mapper.selectPage(p,null).getRecords();
-        System.out.println(list);
         //如果list不为空,添加user
         if (list!=null){
             for (Complain complain:list){
@@ -81,7 +80,6 @@ public class ComplainServiceImpl implements ComplainService {
         QueryWrapper wrapper2 = new QueryWrapper<>();
         wrapper2.eq("status",name);
         List<Complain> list = mapper.selectPage(p,wrapper2).getRecords();
-        System.out.println(list);
         //如果list不为空,添加user
         if (list!=null){
             for (Complain complain:list){
@@ -120,7 +118,6 @@ public class ComplainServiceImpl implements ComplainService {
         wrapper2.eq("user_id", id);
 
         List<Complain> list = mapper.selectPage(p,wrapper2).getRecords();
-        System.out.println(list);
         //如果list不为空,添加user
         if (list!=null){
             for (Complain complain:list){

@@ -62,7 +62,6 @@ public class User_PaymentServiceImpl implements User_PaymentService {
                 user_payment.setUser(user);
                 user_payment.setPayment(payment);
             }
-            System.out.println(userPaymentList);
             return userPaymentList;
         }else{
             return null;
