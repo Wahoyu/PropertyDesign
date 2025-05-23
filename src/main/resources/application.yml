@@ -22,9 +22,9 @@ spring:
     prefix: classpath:/templates/
 
   datasource:
-    url: jdbc:mysql://8.146.199.130:3306/wuye?serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3306/wuye?serverTimezone=UTC&useSSL=false
     username: root
-    password: Why185999
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     initialSize: 5
