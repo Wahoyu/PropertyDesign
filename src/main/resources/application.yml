@@ -22,9 +22,9 @@ spring:
     prefix: classpath:/templates/
 
   datasource:
-    url: jdbc:mysql://localhost:3306/wuye?serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://8.146.199.130:3306/wuye?serverTimezone=UTC&useSSL=false
     username: root
-    password: 123456
+    password: Why185999
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     initialSize: 5
@@ -47,7 +47,7 @@ spring:
 mybatis-plus:
   configuration:
     # MybatisPlus日志
-    # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
     # 关闭驼峰映射
     map-underscore-to-camel-case: false

@@ -38,7 +38,8 @@
                         <button class="layui-btn icon-btn" lay-filter="formSubSearchBook" lay-submit>
                             <i class="layui-icon">&#xe615;</i>搜索
                         </button>
-                        <button id="btnAddBook" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>
+                        <button id="btnAddBook" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加
+                        </button>
                     </div>
                 </div>
             </div>
@@ -112,9 +113,9 @@
             cols: [
                 [
                     {field: 'id', title: 'id'}
-                    ,{field: 'name', sort: true, templet: '#building_1', title: '楼栋名'}
-                    ,{field: 'type', sort: true, templet: '#building_2', title: '类型'}
-                    ,{align: 'center', toolbar: '#tableBarBook', title: '操作', minWidth: 200}
+                    , {field: 'name', sort: true, templet: '#building_1', title: '楼栋名'}
+                    , {field: 'type', sort: true, templet: '#building_2', title: '类型'}
+                    , {align: 'center', toolbar: '#tableBarBook', title: '操作', minWidth: 200}
                 ]
             ]
         });
@@ -126,7 +127,7 @@
 
         // 搜索
         form.on('submit(formSubSearchBook)', function (data) {
-            insTb.reload({where: data.field,url:'/api/findBuilding',page : {curr : 1}}, 'data');
+            insTb.reload({where: data.field, url: '/api/findBuilding', page: {curr: 1}}, 'data');
         });
 
         // 工具条点击事件
@@ -142,7 +143,7 @@
 
         // 显示表单弹窗
         function showEditModel(mBook) {
-            if(mBook==null){
+            if (mBook == null) {
                 admin.open({
                     type: 1,
                     title: '添加楼栋',
@@ -156,12 +157,12 @@
                         form.on('submit(modelSubmitBook)', function (data) {
                             layer.load(2);
                             $.ajax({
-                                url:url,
-                                type:"POST",
-                                data:JSON.stringify(data.field),
-                                contentType:"application/json; charset=utf-8",
-                                dataType:"json",
-                                success: function(res){
+                                url: url,
+                                type: "POST",
+                                data: JSON.stringify(data.field),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (res) {
                                     layer.closeAll('loading');
                                     if (res.code == 200) {
                                         layer.close(dIndex);
@@ -176,7 +177,7 @@
                         });
                     }
                 });
-            }else{
+            } else {
                 admin.open({
                     type: 1,
                     title: '修改楼栋',
@@ -191,12 +192,12 @@
                         form.on('submit(modelSubmitBook)', function (data) {
                             layer.load(2);
                             $.ajax({
-                                url:url,
-                                type:"POST",
-                                data:JSON.stringify(data.field),
-                                contentType:"application/json; charset=utf-8",
-                                dataType:"json",
-                                success: function(res){
+                                url: url,
+                                type: "POST",
+                                data: JSON.stringify(data.field),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (res) {
                                     layer.closeAll('loading');
                                     if (res.code == 200) {
                                         layer.close(dIndex);
