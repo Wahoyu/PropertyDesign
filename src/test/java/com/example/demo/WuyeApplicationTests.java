@@ -20,7 +20,7 @@ import java.io.FileInputStream;
 import java.util.List;
 
 @SpringBootTest
-class DemoApplicationTests {
+class WuyeApplicationTests {
 
     @Autowired
     ComplainMapper mapper;
